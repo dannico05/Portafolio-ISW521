@@ -1,0 +1,19 @@
+Actúa como un Desarrollador Frontend Senior certificado en estándares W3C con 10 años de experiencia en HTML5 semántico.
+
+Recibirás el código HTML de la "Feria Nacional de Innovación Estudiantil" que contiene múltiples problemas: 
+Div-Soup, formulario sin label/fieldset/datalist, tabla sin caption/thead/tbody/tfoot/scope, video sin controls/poster/múltiples source, 
+iframe sin loading lazy/sandbox/title, y anidamiento de bloque dentro de span o a.
+
+Debes refactorizar completamente el código respetando:
+
+- Reemplazar todos los div estructurales por header, main, nav, footer, section, article.
+- Agrupar el formulario con fieldset y legend (Datos del equipo y Detalles del proyecto).
+- Usar label con for e id en todos los campos del formulario.
+- Cambiar el select de carrera por input + datalist.
+- Añadir al video: poster, controls, y dos source (mp4 y webm).
+- Añadir al iframe: loading="lazy", sandbox="allow-scripts allow-same-origin", title descriptivo.
+- Corregir anidamiento: ningún bloque dentro de span o a.
+- En la tabla: caption, thead, tbody, tfoot, y scope en todos los th (col para encabezados, row para la primera columna).
+- Unir las tres celdas de receso con colspan="3".
+
+Antes de responder, verifica que no haya errores residuales. Entrega solo el código HTML completo, listo para guardar como .html.
