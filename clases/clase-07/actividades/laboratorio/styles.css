@@ -1,0 +1,357 @@
+/* ---------- RESET Y VARIABLES BASE ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0A0F1A;      /* Fondo oscuro general */
+    color: #E2E8F0;
+    font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ================= EJERCICIO 1 ================= */
+/* BARRA NAVEGACIÓN */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111827;
+    padding: 0 32px;
+    min-height: 70px;
+    border-bottom: 1px solid #1F2937;
+    flex-wrap: wrap;
+}
+
+.nav-logo {
+    font-weight: 700;
+    font-size: 1.3rem;
+    background: linear-gradient(135deg, #5EEAD4, #2DD4BF);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.nav-logo span {
+    background: none;
+    color: #F1F5F9;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+.nav-links li a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #CBD5E1;
+    transition: color 0.2s;
+    font-size: 1rem;
+}
+.nav-links li a:hover {
+    color: #5EEAD4;
+}
+
+.btn-logout {
+    background: #1F2937;
+    border: 1px solid #374151;
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #E2E8F0;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.btn-logout:hover {
+    background: #374151;
+    border-color: #4B5563;
+}
+
+/* ================= EJERCICIO 3 ================= */
+/* LAYOUT 3 COLUMNAS */
+.dashboard-layout {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    min-height: calc(100vh - 70px);
+}
+
+/* SIDEBAR izquierdo */
+.sidebar {
+    flex: 1;
+    background: #0F172A;
+    border-right: 1px solid #1E293B;
+    padding: 28px 16px;
+}
+.menu-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #94A3B8;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.sidebar nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+}
+.sidebar nav ul li {
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 12px;
+    color: #CBD5E1;
+    transition: background 0.2s;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.sidebar nav ul li:hover {
+    background: #1E293B;
+}
+
+/* MAIN CONTENT */
+.main-content {
+    flex: 3;
+    background: #0F172A;
+    color: #E2E8F0;
+    padding: 24px 28px;
+    overflow-y: auto;
+}
+
+h2 {
+    color: #F1F5F9;
+    border-left: 5px solid #2DD4BF;
+    padding-left: 16px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+/* ================= EJERCICIO 2 ================= */
+/* CUADRÍCULA DE SENSORES */
+.sensor-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 32px;
+}
+
+.sensor-card {
+    flex: 1 1 calc(33.333% - 14px);
+    min-width: 210px;
+    background: #1E293B;
+    border-radius: 24px;
+    padding: 18px 16px;
+    border: 1px solid #334155;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.sensor-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.5);
+    border-color: #5EEAD4;
+}
+
+.sensor-card h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #BAE6FD;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.sensor-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #5EEAD4;
+    line-height: 1.2;
+    margin: 8px 0 4px;
+}
+.sensor-label {
+    font-size: 0.7rem;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+.badge-valve.closed {
+    background: #450A0A;
+    color: #FCA5A5;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 40px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* GRÁFICO DE PRESIÓN */
+.grafico-presion {
+    margin-top: 16px;
+    background: #111827;
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid #1F2937;
+}
+.grafico-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 16px;
+    font-weight: 600;
+    color: #E2E8F0;
+}
+.min-label {
+    background: #1E293B;
+    color: #93C5FD;
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+.chart-container {
+    width: 100%;
+    margin: 10px 0;
+}
+.line-chart {
+    width: 100%;
+    height: auto;
+    max-height: 110px;
+}
+.chart-note {
+    background: #2D1F0E;
+    color: #FCD34D;
+    font-size: 0.7rem;
+    margin-top: 12px;
+    text-align: center;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 40px;
+}
+
+/* PANEL DERECHO (ALERTAS) */
+.alert-panel {
+    flex: 1;
+    background: #0F172A;
+    border-left: 1px solid #1E293B;
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.alert-panel h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #FBBF24;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #B45309;
+    padding-bottom: 8px;
+}
+.alert {
+    background: #1E293B;
+    border-left: 4px solid #F59E0B;
+    padding: 12px 14px;
+    border-radius: 14px;
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+.alert strong {
+    color: #FDE68A;
+}
+.alert-time {
+    font-size: 0.65rem;
+    color: #9CA3AF;
+    display: inline-block;
+    margin-top: 6px;
+}
+.next-update {
+    margin-top: 12px;
+    font-size: 0.7rem;
+    text-align: right;
+    color: #CBD5E1;
+    font-weight: 500;
+    border-top: 1px solid #2D3748;
+    padding-top: 12px;
+}
+.dashboard-version {
+    background: #1E293B;
+    color: #A5F3C3;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 6px;
+    border-radius: 30px;
+    margin: 4px 0;
+}
+.system-status {
+    background: #0C1E1A;
+    color: #9AE6B4;
+    font-size: 0.7rem;
+    text-align: center;
+    padding: 10px;
+    border-radius: 16px;
+    line-height: 1.4;
+}
+
+/* ================= EJERCICIO 4 ================= */
+/* RESPONSIVE (max-width: 768px) */
+@media (max-width: 768px) {
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .dashboard-layout {
+        flex-direction: column;
+        min-height: auto;
+    }
+    .sidebar,
+    .alert-panel {
+        flex: none;
+        width: 100%;
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid #1E293B;
+        padding: 20px;
+    }
+    .sidebar {
+        border-right: 0;
+        border-bottom: 1px solid #1E293B;
+    }
+    .main-content {
+        flex: 1;
+        padding: 20px;
+    }
+    .navbar {
+        padding: 0 16px;
+        min-height: 60px;
+        gap: 12px;
+    }
+    .nav-links {
+        gap: 18px;
+        order: 2;
+    }
+    .btn-logout {
+        order: 3;
+    }
+    .sensor-card {
+        flex-basis: 100%;
+    }
+    .grafico-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* Tablet: 2 columnas en grid de sensores */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .sensor-card {
+        flex-basis: calc(50% - 14px);
+    }
+}

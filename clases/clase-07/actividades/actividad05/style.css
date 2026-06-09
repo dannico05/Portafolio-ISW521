@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVBAR */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    padding: 20px;
+    background: #333;
+    color: white;
+}
+
+.links{
+    display: flex;
+    gap: 20px;
+}
+
+.links a{
+    color: white;
+    text-decoration: none;
+}
+
+.cta{
+    padding: 10px 20px;
+}
+
+/* CUERPO */
+.wrapper{
+    flex: 1;
+
+    display: flex;
+}
+
+.sidebar{
+    flex: 1;
+    background: #d9d9d9;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenido{
+    flex: 3;
+    background: #f2f2f2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel{
+    flex: 1;
+    background: #d9d9d9;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FOOTER */
+.footer{
+    display: flex;
+    background: #333;
+    color: white;
+}
+
+.footer div{
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid white;
+}
