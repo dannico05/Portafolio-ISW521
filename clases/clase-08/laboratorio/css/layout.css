@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f1f4f9;
+    padding: 1rem;
+}
+
+/* GRID PRINCIPAL: asimétrico con áreas definidas */
+.showroom-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr 300px;
+    grid-template-areas: 
+        "selector   vehicle   quote"
+        "palette    palette   palette";
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 90vh;
+    align-content: start;
+}
+
+/* Asignación de áreas */
+.zone-selector { grid-area: selector; }
+.zone-vehicle  { grid-area: vehicle; }
+.zone-quote    { grid-area: quote; }
+.zone-palette  { grid-area: palette; }
+
+/* Estilos de las tarjetas */
+.zone-selector, .zone-quote, .zone-vehicle {
+    background: white;
+    border-radius: 28px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    padding: 1.2rem;
+    transition: box-shadow 0.2s;
+}
+
+.zone-vehicle {
+    background: #fefefe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Zona paleta: fondo semitransparente, ocupa todo el ancho */
+.zone-palette {
+    background: #ffffffdd;
+    backdrop-filter: blur(4px);
+    border-radius: 48px;
+    margin-top: 0.5rem;
+    padding: 1rem 0.5rem;
+}

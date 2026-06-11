@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Auto Style CR | Showroom Taller de Pintura</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/palette.css">
+    <link rel="stylesheet" href="css/interactions.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- RADIOS OCULTOS -->
+    <!-- Modelo -->
+    <input type="radio" name="car-model" id="model-corolla" class="hidden-radio" checked>
+    <input type="radio" name="car-model" id="model-hilux"   class="hidden-radio">
+
+    <!-- Ángulo -->
+    <input type="radio" name="car-angle" id="angle-front" class="hidden-radio" checked>
+    <input type="radio" name="car-angle" id="angle-side"  class="hidden-radio">
+    <input type="radio" name="car-angle" id="angle-rear"  class="hidden-radio">
+
+    <!-- Colores (mínimo 6) -->
+    <input type="radio" name="car-color" id="color-plata"   class="hidden-radio" checked>
+    <input type="radio" name="car-color" id="color-rojo"    class="hidden-radio">
+    <input type="radio" name="car-color" id="color-blanco"  class="hidden-radio">
+    <input type="radio" name="car-color" id="color-negro"   class="hidden-radio">
+    <input type="radio" name="car-color" id="color-azul"    class="hidden-radio">
+    <input type="radio" name="car-color" id="color-verde"   class="hidden-radio">
+    <input type="radio" name="car-color" id="color-naranja" class="hidden-radio">
+
+    <!-- GRID PRINCIPAL -->
+    <div class="showroom-grid">
+
+        <!-- ZONA A: selector modelo + ángulo -->
+        <aside class="zone-selector">
+            <div class="card">
+                <h2>🚗 Modelo Toyota</h2>
+                <div class="model-group">
+                    <label for="model-corolla" class="model-btn">Corolla GR 2024 <span>Sedán</span></label>
+                    <label for="model-hilux"   class="model-btn">Hilux 4x4 SR <span>Pickup</span></label>
+                </div>
+            </div>
+            <div class="card">
+                <h2>📷 Ángulo</h2>
+                <div class="angle-group">
+                    <label for="angle-front" class="angle-btn">🚘 Frontal</label>
+                    <label for="angle-side"  class="angle-btn">🔄 Perfil</label>
+                    <label for="angle-rear"  class="angle-btn">🔙 Trasera</label>
+                </div>
+            </div>
+            <div class="card shop-info">
+                <p>🎨 <strong>Pintura premium</strong><br>Garantía 3 años · Color sólido/metalizado</p>
+            </div>
+        </aside>
+
+        <!-- ZONA B: vehículo con superposición (grid overlay) -->
+        <main class="zone-vehicle">
+            <div class="vehicle-stage">
+                <!-- Corolla -->
+                <div class="car-model corolla-set">
+                    <div class="vehicle-stack">
+                        <img class="angle-img front" src="https://placehold.co/700x450/3a6ea5/white?text=Toyota+Corolla+GR+Frontal" alt="Corolla frontal">
+                        <img class="angle-img side"  src="https://placehold.co/700x450/3a6ea5/white?text=Toyota+Corolla+GR+Perfil" alt="Corolla perfil">
+                        <img class="angle-img rear"  src="https://placehold.co/700x450/3a6ea5/white?text=Toyota+Corolla+GR+Trasera" alt="Corolla trasera">
+                        <div class="color-overlay"></div>
+                    </div>
+                </div>
+                <!-- Hilux -->
+                <div class="car-model hilux-set">
+                    <div class="vehicle-stack">
+                        <img class="angle-img front" src="https://placehold.co/700x450/4a6e3b/white?text=Toyota+Hilux+4x4+Frontal" alt="Hilux frontal">
+                        <img class="angle-img side"  src="https://placehold.co/700x450/4a6e3b/white?text=Toyota+Hilux+4x4+Perfil" alt="Hilux perfil">
+                        <img class="angle-img rear"  src="https://placehold.co/700x450/4a6e3b/white?text=Toyota+Hilux+4x4+Trasera" alt="Hilux trasera">
+                        <div class="color-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- ZONA C: cotización dinámica (precio según modelo) -->
+        <aside class="zone-quote">
+            <div class="quote-card">
+                <h2>💰 Cotización estimada</h2>
+                <div class="quote-items">
+                    <p>🔧 Enderezado + pintura completa</p>
+                    <p>🎨 Color a elección (sin recargo)</p>
+                    <p>🛡️ Garantía 36 meses</p>
+                </div>
+                <div class="price-box">
+                    <div class="price-corolla">Corolla GR Sedán<br><strong>₡295 000</strong> +IVA</div>
+                    <div class="price-hilux">Hilux 4x4 SR<br><strong>₡345 000</strong> +IVA</div>
+                </div>
+                <p class="quote-footer">✅ Incluye pulido y sellado cerámico</p>
+            </div>
+        </aside>
+
+        <!-- ZONA D: paleta de colores con FLEXBOX + animación -->
+        <div class="zone-palette">
+            <div class="palette-flex">
+                <label for="color-plata"   class="paint-swatch" style="background: var(--swatch-plata)"></label>
+                <label for="color-rojo"    class="paint-swatch" style="background: var(--swatch-rojo)"></label>
+                <label for="color-blanco"  class="paint-swatch" style="background: var(--swatch-blanco)"></label>
+                <label for="color-negro"   class="paint-swatch" style="background: var(--swatch-negro)"></label>
+                <label for="color-azul"    class="paint-swatch" style="background: var(--swatch-azul)"></label>
+                <label for="color-verde"   class="paint-swatch" style="background: var(--swatch-verde)"></label>
+                <label for="color-naranja" class="paint-swatch" style="background: var(--swatch-naranja)"></label>
+            </div>
+            <p class="palette-note">🎨 toca un color → pinta el vehículo al instante</p>
+        </div>
+    </div>
+</body>
+</html>

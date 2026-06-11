@@ -1,0 +1,119 @@
+/* 1. CONTROL DE MODELO (Corolla / Hilux) */
+.car-model {
+    display: none;
+}
+#model-corolla:checked ~ .showroom-grid .corolla-set {
+    display: block;
+}
+#model-hilux:checked ~ .showroom-grid .hilux-set {
+    display: block;
+}
+
+/* 2. GRID OVERLAY: 3 imágenes en la misma celda*/
+.vehicle-stack {
+    display: grid;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+}
+.vehicle-stack .angle-img {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    border-radius: 24px;
+}
+/* Capa de pintura (color overlay usando variable) */
+.color-overlay {
+    grid-area: 1 / 1;
+    background-color: var(--car-color);
+    mix-blend-mode: color;
+    pointer-events: none;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+/* Control de ángulo con :checked + hermano general */
+#angle-front:checked ~ .showroom-grid .car-model .angle-img.front { opacity: 1; }
+#angle-side:checked  ~ .showroom-grid .car-model .angle-img.side  { opacity: 1; }
+#angle-rear:checked  ~ .showroom-grid .car-model .angle-img.rear  { opacity: 1; }
+
+
+/* 3. RADIO BUTTON HACK + VARIABLES (PINTAR EL CARRO) */
+#color-plata:checked   ~ .showroom-grid { --car-color: var(--car-color-plata, #A8A8B0); }
+#color-rojo:checked    ~ .showroom-grid { --car-color: var(--car-color-rojo, #CC2233); }
+#color-blanco:checked  ~ .showroom-grid { --car-color: var(--car-color-blanco, #F0F0F0); }
+#color-negro:checked   ~ .showroom-grid { --car-color: var(--car-color-negro, #111111); }
+#color-azul:checked    ~ .showroom-grid { --car-color: var(--car-color-azul, #1A4A8A); }
+#color-verde:checked   ~ .showroom-grid { --car-color: var(--car-color-verde, #1A6A2A); }
+#color-naranja:checked ~ .showroom-grid { --car-color: var(--car-color-naranja, #CC5500); }
+
+/* Actualización de variable en :root también */
+#color-plata:checked   ~ .showroom-grid { --car-color: #B0B0B8; }
+#color-rojo:checked    ~ .showroom-grid { --car-color: #CC2233; }
+#color-blanco:checked  ~ .showroom-grid { --car-color: #F5F5F5; }
+#color-negro:checked   ~ .showroom-grid { --car-color: #1A1A1A; }
+#color-azul:checked    ~ .showroom-grid { --car-color: #1A4A8A; }
+#color-verde:checked   ~ .showroom-grid { --car-color: #1A6A2A; }
+#color-naranja:checked ~ .showroom-grid { --car-color: #CC5500; }
+
+/* 4. COTIZACIÓN DINÁMICA (Precio según modelo) */
+.price-corolla, .price-hilux {
+    display: none;
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 1rem;
+    background: #eef2f9;
+    border-radius: 20px;
+}
+#model-corolla:checked ~ .showroom-grid .price-corolla {
+    display: block;
+}
+#model-hilux:checked ~ .showroom-grid .price-hilux {
+    display: block;
+}
+
+/*  5. ESTILOS ADICIONALES DE BOTONES Y MEJORAS */
+.model-btn, .angle-btn {
+    display: inline-block;
+    background: #f0f2f5;
+    padding: 0.7rem 1rem;
+    margin: 0.4rem;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    font-weight: 600;
+}
+.model-btn:hover, .angle-btn:hover {
+    background: #e0e4e9;
+    transform: scale(0.98);
+}
+/* indicador visual del modelo/ángulo activo via :checked + selector */
+
+.quote-card h2, .card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+.quote-items p {
+    margin: 0.6rem 0;
+}
+.price-box {
+    margin-top: 1rem;
+}
+.price-corolla strong, .price-hilux strong {
+    font-size: 1.8rem;
+    color: #2c6e2c;
+}
+.quote-footer {
+    font-size: 0.75rem;
+    margin-top: 0.8rem;
+    color: #4a5b6e;
+}
+.shop-info p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+}

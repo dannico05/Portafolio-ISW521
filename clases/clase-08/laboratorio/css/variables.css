@@ -1,0 +1,31 @@
+:root {
+    /* Colores base para el pintado (vehicle tint) */
+    --car-color: #A8A8B0;        /* plata por defecto */
+    --car-color-rojo: #CC2233;
+    --car-color-blanco: #F0F0F0;
+    --car-color-negro: #111111;
+    --car-color-azul: #1A4A8A;
+    --car-color-verde: #1A6A2A;
+    --car-color-naranja: #CC5500;
+
+    /* Swatches visuales (paleta) */
+    --swatch-plata:   #B0B0B8;
+    --swatch-rojo:    #CC2233;
+    --swatch-blanco:  #EEEEEE;
+    --swatch-negro:   #222222;
+    --swatch-azul:    #1A4A8A;
+    --swatch-verde:   #1A6A2A;
+    --swatch-naranja: #CC5500;
+
+    /* Transiciones globales */
+    --transition-default: all 0.3s ease;
+}
+
+/* Los radios se ocultan visualmente pero siguen funcionando */
+.hidden-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+}
