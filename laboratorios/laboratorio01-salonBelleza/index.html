@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Jireh Studio | Salón de Belleza</title>
+    <meta name="description" content="Jireh Studio – Donde la belleza se encuentra con la armonía. Servicios de corte, coloración, peinados y maquillaje.">
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Fuentes opcionales (Google Fonts) – Esto no es un framework, solo tipografía -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Íconos (Font Awesome es una librería de íconos, no es un framework CSS de layout. Si quieres evitar cualquier riesgo, usa íconos SVG o emojis. Yo te pondré texto plano al inicio, luego puedes añadir íconos sin problemas) -->
+</head>
+<body>
+
+    <!-- ========== HEADER + NAV (FLEXBOX) ========== -->
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Jireh Studio</h1>
+                <p class="tagline">Belleza & Armonía</p>
+            </div>
+            <nav class="main-nav" aria-label="Navegación principal">
+                <ul class="nav-list">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="#galeria" class="nav-link">Galería</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+            <!-- Botón para modo oscuro/claro (Web Storage) -->
+            <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema claro/oscuro">🌙 Modo oscuro</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- ========== SECCIÓN HERO (INICIO) ========== -->
+        <section id="inicio" class="hero">
+            <div class="container hero-content">
+                <h2>Donde la belleza se encuentra con la armonía</h2>
+                <p>En Jireh Studio realzamos tu esencia con técnicas profesionales y productos de alta calidad.</p>
+                <a href="#contacto" class="btn btn-primary">Agendar cita</a>
+            </div>
+        </section>
+
+        <!-- ========== SERVICIOS (CSS GRID) ========== -->
+        <section id="servicios" class="services">
+            <div class="container">
+                <h2 class="section-title">Nuestros servicios</h2>
+                <div class="services-grid">
+                    <article class="service-card">
+                        <div class="service-icon">✂️</div>
+                        <h3>Corte y estilo</h3>
+                        <p>Cortes personalizados según tu tipo de cabello y tendencia.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">🎨</div>
+                        <h3>Coloración</h3>
+                        <p>Balayage, reflejos, color completo o decoloración.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">💇‍♀️</div>
+                        <h3>Peinados</h3>
+                        <p>Recogidos, ondas, alisados y peinados para eventos.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">💄</div>
+                        <h3>Maquillaje</h3>
+                        <p>Maquillaje social, de novia o para sesiones fotográficas.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== GALERÍA (CSS GRID también, es válido usar Grid en dos sitios) ========== -->
+        <section id="galeria" class="gallery">
+            <div class="container">
+                <h2 class="section-title">Nuestro trabajo</h2>
+                <div class="gallery-grid">
+                    <!-- Cada imagen debe tener alt descriptivo. Por ahora pondré placeholders, luego reemplazarás con tus imágenes -->
+                    <figure class="gallery-item">
+                        <img src="img/placeholder1.jpg" alt="Resultado de corte y coloración en cabello largo" loading="lazy">
+                        <figcaption>Corte + Balayage</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/placeholder2.jpg" alt="Peinado recogido con trenzas para evento especial" loading="lazy">
+                        <figcaption>Recogido elegante</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/placeholder3.jpg" alt="Maquillaje de novia con tonos naturales" loading="lazy">
+                        <figcaption>Maquillaje novia</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/placeholder4.jpg" alt="Corte bob moderno y texturizado" loading="lazy">
+                        <figcaption>Corte bob texturizado</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== TESTIMONIOS (opcional pero enriquece) ========== -->
+        <aside class="testimonials" aria-label="Testimonios de clientes">
+            <div class="container">
+                <h2 class="section-title">Lo que dicen nuestras clientas</h2>
+                <div class="testimonial-flex">
+                    <div class="testimonial-card">
+                        <p>"El mejor salón, atención personalizada y resultados increíbles."</p>
+                        <cite>- María G.</cite>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Me encantó mi coloración, volveré seguro."</p>
+                        <cite>- Karla R.</cite>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ========== CONTACTO ========== -->
+        <section id="contacto" class="contact">
+            <div class="container">
+                <h2 class="section-title">Contacto</h2>
+                <p>📞 Llámanos o escríbenos para agendar tu cita</p>
+                <address>
+                    <strong>Jireh Studio</strong><br>
+                    Ubicación: San José, Costa Rica<br>
+                    Tel: +506 8888-7777<br>
+                    Email: info@jirehstudio.com
+                </address>
+                <form action="#" method="post" class="contact-form">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required aria-required="true">
+                    
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required aria-required="true">
+                    
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="3" required aria-required="true"></textarea>
+                    
+                    <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Jireh Studio. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="WhatsApp">💬</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>
