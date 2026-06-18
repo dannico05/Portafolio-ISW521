@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Jireh Studio | Salón de Belleza</title>
-    <meta name="description" content="Jireh Studio – Donde la belleza se encuentra con la armonía. Servicios de corte, coloración, peinados y maquillaje.">
+    <meta name="description" content="Jireh Studio – Donde la belleza se encuentra con la armonía. Servicios de cabello, uñas, estética, maquillaje y peinados.">
     <!-- CSS principal -->
     <link rel="stylesheet" href="css/styles.css">
-    <!-- Fuentes opcionales (Google Fonts) – Esto no es un framework, solo tipografía -->
+    <!-- Fuentes (Google Fonts) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <!-- Íconos (Font Awesome es una librería de íconos, no es un framework CSS de layout. Si quieres evitar cualquier riesgo, usa íconos SVG o emojis. Yo te pondré texto plano al inicio, luego puedes añadir íconos sin problemas) -->
 </head>
 <body>
 
@@ -17,24 +16,29 @@
     <header class="site-header">
         <div class="container header-container">
             <div class="logo">
-                <h1>Jireh Studio</h1>
-                <p class="tagline">Belleza & Armonía</p>
+                <!-- Logo: si tienes imagen, usa <img>; si no, texto -->
+                <img src="img/logo.png" alt="Logo de Jireh Studio" class="logo-img" width="60" height="60">
+                <div>
+                    <h1>Jireh Studio</h1>
+                    <p class="tagline">Belleza & Armonía</p>
+                </div>
             </div>
             <nav class="main-nav" aria-label="Navegación principal">
                 <ul class="nav-list">
-                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
                     <li><a href="#servicios" class="nav-link">Servicios</a></li>
                     <li><a href="#galeria" class="nav-link">Galería</a></li>
+                    <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
+                    <li><a href="#materiales" class="nav-link">Productos</a></li>
+                    <li><a href="#ubicacion" class="nav-link">Ubicación</a></li>
                     <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 </ul>
             </nav>
-            <!-- Botón para modo oscuro/claro (Web Storage) -->
             <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema claro/oscuro">🌙 Modo oscuro</button>
         </div>
     </header>
 
     <main>
-        <!-- ========== SECCIÓN HERO (INICIO) ========== -->
+        <!-- ========== HERO ========== -->
         <section id="inicio" class="hero">
             <div class="container hero-content">
                 <h2>Donde la belleza se encuentra con la armonía</h2>
@@ -49,95 +53,288 @@
                 <h2 class="section-title">Nuestros servicios</h2>
                 <div class="services-grid">
                     <article class="service-card">
-                        <div class="service-icon">✂️</div>
-                        <h3>Corte y estilo</h3>
-                        <p>Cortes personalizados según tu tipo de cabello y tendencia.</p>
-                    </article>
-                    <article class="service-card">
-                        <div class="service-icon">🎨</div>
-                        <h3>Coloración</h3>
-                        <p>Balayage, reflejos, color completo o decoloración.</p>
-                    </article>
-                    <article class="service-card">
                         <div class="service-icon">💇‍♀️</div>
-                        <h3>Peinados</h3>
-                        <p>Recogidos, ondas, alisados y peinados para eventos.</p>
+                        <h3>Cabello</h3>
+                        <p>Cortes, coloración, tratamientos capilares y alisados.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">💅</div>
+                        <h3>Uñas</h3>
+                        <p>Esmaltado, gel, acrílico y cuidado de manos y pies.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">✨</div>
+                        <h3>Estética</h3>
+                        <p>Tratamientos faciales, corporales y aparatología avanzada.</p>
                     </article>
                     <article class="service-card">
                         <div class="service-icon">💄</div>
                         <h3>Maquillaje</h3>
-                        <p>Maquillaje social, de novia o para sesiones fotográficas.</p>
+                        <p>Maquillaje social, de novia y para sesiones fotográficas.</p>
+                    </article>
+                    <article class="service-card">
+                        <div class="service-icon">👑</div>
+                        <h3>Peinados</h3>
+                        <p>Recogidos, ondas, alisados y peinados para eventos.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- ========== GALERÍA (CSS GRID también, es válido usar Grid en dos sitios) ========== -->
+        <!-- ========== GALERÍA (15 FOTOS) ========== -->
         <section id="galeria" class="gallery">
             <div class="container">
                 <h2 class="section-title">Nuestro trabajo</h2>
                 <div class="gallery-grid">
-                    <!-- Cada imagen debe tener alt descriptivo. Por ahora pondré placeholders, luego reemplazarás con tus imágenes -->
+                    <!-- Genera 15 ítems. Reemplaza los src con tus imágenes reales -->
                     <figure class="gallery-item">
-                        <img src="img/placeholder1.jpg" alt="Resultado de corte y coloración en cabello largo" loading="lazy">
-                        <figcaption>Corte + Balayage</figcaption>
+                        <img src="img/galeria1.webp" alt="Corte y coloración balayage en cabello largo" loading="lazy">
+                        <figcaption>Balayage y corte</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/placeholder2.jpg" alt="Peinado recogido con trenzas para evento especial" loading="lazy">
-                        <figcaption>Recogido elegante</figcaption>
+                        <img src="img/galeria2.webp" alt="Uñas esculpidas en gel con diseño floral" loading="lazy">
+                        <figcaption>Uñas en gel</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/placeholder3.jpg" alt="Maquillaje de novia con tonos naturales" loading="lazy">
+                        <img src="img/galeria3.webp" alt="Tratamiento de nanoplastia para alisar el cabello" loading="lazy">
+                        <figcaption>Nanoplastia</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/galeria4.webp" alt="Maquillaje de novia con tonos nude" loading="lazy">
                         <figcaption>Maquillaje novia</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/placeholder4.jpg" alt="Corte bob moderno y texturizado" loading="lazy">
-                        <figcaption>Corte bob texturizado</figcaption>
+                        <img src="img/galeria5.webp" alt="Recogido elegante con trenzas para evento" loading="lazy">
+                        <figcaption>Recogido elegante</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/galeria6.webp" alt="Corte bob texturizado moderno" loading="lazy">
+                        <figcaption>Corte bob</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/galeria7.webp" alt="Pedicure spa con parafina y exfoliación" loading="lazy">
+                        <figcaption>Pedicure spa</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/galeria8.webp" alt="Reflejos y mechas en cabello castaño" loading="lazy">
+                        <figcaption>Reflejos</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/galeria9.webp" alt="Maquillaje de ojos ahumados y labios nude" loading="lazy">
+                        <figcaption>Maquillaje ahumado</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/galeria10.webp" alt="Uñas semipermanentes con efecto espejo" loading="lazy">
+                        <figcaption>Uñas espejo</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/galeria11.webp" alt="Tratamiento de radiofrecuencia facial" loading="lazy">
+                        <figcaption>Radiofrecuencia</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/galeria12.webp" alt="Peinado con ondas playeras para cabello suelto" loading="lazy">
+                        <figcaption>Ondas playeras</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/galeria13.webp" alt="Coloración fantasía en tonos rosados" loading="lazy">
+                        <figcaption>Color fantasía</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/galeria14.webp" alt="Manicura con esmalte semitransparente y detalles dorados" loading="lazy">
+                        <figcaption>Manicura dorada</figcaption>
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="img/galeria15.webp" alt="Tratamiento de microagujas para rejuvenecimiento facial" loading="lazy">
+                        <figcaption>Microagujas</figcaption>
                     </figure>
                 </div>
             </div>
         </section>
 
-        <!-- ========== TESTIMONIOS (opcional pero enriquece) ========== -->
-        <aside class="testimonials" aria-label="Testimonios de clientes">
+        <!-- ========== TESTIMONIOS (SLIDER) ========== -->
+        <section id="testimonios" class="testimonials-slider" aria-label="Testimonios de clientes">
             <div class="container">
                 <h2 class="section-title">Lo que dicen nuestras clientas</h2>
-                <div class="testimonial-flex">
-                    <div class="testimonial-card">
-                        <p>"El mejor salón, atención personalizada y resultados increíbles."</p>
-                        <cite>- María G.</cite>
+                <div class="slider-container">
+                    <div class="slider-track" id="sliderTrack">
+                        <!-- Slide 1 -->
+                        <article class="slide" role="group" aria-label="Testimonio 1 de 3">
+                            <div class="testimonial-content">
+                                <img src="img/cliente1.webp" alt="Foto de María González" class="avatar" loading="lazy">
+                                <blockquote>
+                                    "El mejor salón de belleza. Me hicieron un cambio de look espectacular y el trato fue excelente."
+                                </blockquote>
+                                <cite>— María González, clienta frecuente</cite>
+                            </div>
+                        </article>
+                        <!-- Slide 2 -->
+                        <article class="slide" role="group" aria-label="Testimonio 2 de 3">
+                            <div class="testimonial-content">
+                                <img src="img/cliente2.webp" alt="Foto de Karla Rodríguez" class="avatar" loading="lazy">
+                                <blockquote>
+                                    "Siempre salgo encantada. La atención personalizada y los productos de calidad marcan la diferencia."
+                                </blockquote>
+                                <cite>— Karla Rodríguez, clienta desde 2024</cite>
+                            </div>
+                        </article>
+                        <!-- Slide 3 -->
+                        <article class="slide" role="group" aria-label="Testimonio 3 de 3">
+                            <div class="testimonial-content">
+                                <img src="img/cliente3.webp" alt="Foto de Laura Méndez" class="avatar" loading="lazy">
+                                <blockquote>
+                                    "Recomiendo Jireh Studio a todas mis amigas. Son profesionales y el ambiente es súper acogedor."
+                                </blockquote>
+                                <cite>— Laura Méndez, influencer local</cite>
+                            </div>
+                        </article>
                     </div>
-                    <div class="testimonial-card">
-                        <p>"Me encantó mi coloración, volveré seguro."</p>
-                        <cite>- Karla R.</cite>
+                    <!-- Controles -->
+                    <button class="slider-btn prev" id="prevBtn" aria-label="Testimonio anterior">&#10094;</button>
+                    <button class="slider-btn next" id="nextBtn" aria-label="Testimonio siguiente">&#10095;</button>
+                </div>
+                <!-- Indicadores (puntos) -->
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
+        </section>
+
+        <!-- ========== MATERIALES Y PRODUCTOS ========== -->
+        <section id="materiales" class="materials">
+            <div class="container">
+                <h2 class="section-title">Nuestros productos y herramientas</h2>
+                <!-- Subsección: Herramientas/Marcas -->
+                <h3 class="subsection-title">Marcas y herramientas que usamos</h3>
+                <div class="materials-grid">
+                    <div class="material-card">
+                        <img src="img/material1.webp" alt="Secador Babyliss profesional" loading="lazy">
+                        <h4>Babyliss</h4>
+                        <p>Secadores, planchas y crioterapia (cepillo en frío).</p>
+                    </div>
+                    <div class="material-card">
+                        <img src="img/material2.webp" alt="Plancha Olivia Garden" loading="lazy">
+                        <h4>Olivia Garden</h4>
+                        <p>Secadores y planchas de alta calidad.</p>
+                    </div>
+                    <div class="material-card">
+                        <img src="img/material3.webp" alt="Láser cauterizador Uki Sonic" loading="lazy">
+                        <h4>Uki Sonic</h4>
+                        <p>Plancha láser cauterizadora para tratamientos.</p>
+                    </div>
+                    <div class="material-card">
+                        <img src="img/material4.webp" alt="Esmaltes Gloss Over" loading="lazy">
+                        <h4>Gloss Over / Are</h4>
+                        <p>Esmaltes profesionales para uñas.</p>
+                    </div>
+                    <div class="material-card">
+                        <img src="img/material5.webp" alt="Aparatología estética" loading="lazy">
+                        <h4>Aparatología</h4>
+                        <p>Lipolaser, cavitación, radiofrecuencia, dermabrasión, ultrasonido, microagujas, peeling láser, altafrecuencia, maderoterapia.</p>
+                    </div>
+                    <div class="material-card">
+                        <img src="img/material6.webp" alt="Productos Filip Martin" loading="lazy">
+                        <h4>Filip Martin</h4>
+                        <p>Línea de shampoo y ampollas para caída capilar.</p>
+                    </div>
+                </div>
+
+                <!-- Subsección: Productos en venta -->
+                <h3 class="subsection-title" style="margin-top: 3rem;">Productos que ofrecemos en venta</h3>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <img src="img/producto1.webp" alt="Shampoo Filip Martin contra caída" loading="lazy">
+                        <h4>Shampoo Filip Martin</h4>
+                        <p class="price">₡37.900</p>
+                        <p>Ayuda con la pérdida de cabello y afecciones capilares, con principios activos naturales.</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="img/producto2.webp" alt="Ampolla en spray Filip Martin" loading="lazy">
+                        <h4>Ampolla spray Filip Martin</h4>
+                        <p class="price">₡25.900</p>
+                        <p>Tratamiento contra la caída capilar, de aplicación directa.</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="img/producto3.webp" alt="Protector térmico Firense" loading="lazy">
+                        <h4>Protector térmico Firense</h4>
+                        <p class="price">₡19.500</p>
+                        <p>Repara, sella puntas y combate el frizz.</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="img/producto4.webp" alt="Shampoo queratina Firense" loading="lazy">
+                        <h4>Shampoo queratina Firense</h4>
+                        <p class="price">₡16.900</p>
+                        <p>Mantenimiento de alisos, con queratina.</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="img/producto5.webp" alt="Línea Terra Lendan para colochos" loading="lazy">
+                        <h4>Línea Terra Lendan (Colochos)</h4>
+                        <p class="price">Desde ₡19.900</p>
+                        <p>Shampoo, activador, gel definición, acondicionador, protector térmico/solar y aceite.</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="img/producto6.webp" alt="Línea Terra Lendan para lisas" loading="lazy">
+                        <h4>Línea Terra Lendan (Lisos)</h4>
+                        <p class="price">Desde ₡19.900</p>
+                        <p>Shampoo, mascarilla, protector térmico/solar, acondicionador.</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="img/producto7.webp" alt="Línea Cuticle Restore" loading="lazy">
+                        <h4>Línea Cuticle Restore</h4>
+                        <p class="price">Shampoo ₡16.900 / Mascarilla ₡19.900</p>
+                        <p>Tratamiento reparador de cutículas.</p>
                     </div>
                 </div>
             </div>
-        </aside>
+        </section>
+
+        <!-- ========== UBICACIÓN (MAPA) ========== -->
+        <section id="ubicacion" class="location">
+            <div class="container">
+                <h2 class="section-title">Encuéntranos</h2>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.123456789!2d-84.343481!3d10.374848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1234567890abcdef!2sJireh%20Studio!5e0!3m2!1ses!2scr!4v1234567890" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0; border-radius: 20px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Mapa de ubicación de Jireh Studio">
+                    </iframe>
+                </div>
+                <p class="address"><strong>Dirección:</strong> Frente al Banco Popular, contiguo a Cafetería Forelo, Aguas Zarcas, San Carlos, Alajuela, Costa Rica.</p>
+                <p class="coordinates"><strong>Coordenadas:</strong> 10.374848, -84.343481</p>
+            </div>
+        </section>
 
         <!-- ========== CONTACTO ========== -->
         <section id="contacto" class="contact">
             <div class="container">
                 <h2 class="section-title">Contacto</h2>
-                <p>📞 Llámanos o escríbenos para agendar tu cita</p>
-                <address>
-                    <strong>Jireh Studio</strong><br>
-                    Ubicación: San José, Costa Rica<br>
-                    Tel: +506 8888-7777<br>
-                    Email: info@jirehstudio.com
-                </address>
-                <form action="#" method="post" class="contact-form">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" required aria-required="true">
-                    
-                    <label for="email">Correo electrónico:</label>
-                    <input type="email" id="email" name="email" required aria-required="true">
-                    
-                    <label for="mensaje">Mensaje:</label>
-                    <textarea id="mensaje" name="mensaje" rows="3" required aria-required="true"></textarea>
-                    
-                    <button type="submit" class="btn btn-primary">Enviar mensaje</button>
-                </form>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Horarios de atención</h3>
+                        <p><strong>Lunes a sábado:</strong> 10:00 am – 6:00 pm</p>
+                        <p><strong>Teléfono / WhatsApp:</strong> <a href="https://wa.me/50689643948" target="_blank">+506 8964-3948</a></p>
+                        <p><strong>Correo electrónico:</strong> <a href="mailto:yensi.f.a@gmail.com">yensi.f.a@gmail.com</a></p>
+                        <p><strong>Síguenos en redes:</strong></p>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/jstudioaz" target="_blank" aria-label="Instagram">📷 Instagram</a>
+                            <a href="https://www.facebook.com/186932795197579" target="_blank" aria-label="Facebook">👍 Facebook</a>
+                        </div>
+                    </div>
+                    <form action="#" method="post" class="contact-form">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required aria-required="true" placeholder="Tu nombre">
+                        
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" id="email" name="email" required aria-required="true" placeholder="tucorreo@ejemplo.com">
+                        
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" required aria-required="true" placeholder="¿En qué servicio estás interesado?"></textarea>
+                        
+                        <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                    </form>
+                </div>
             </div>
         </section>
     </main>
@@ -146,9 +343,9 @@
         <div class="container footer-content">
             <p>&copy; 2026 Jireh Studio. Todos los derechos reservados.</p>
             <div class="social-links">
-                <a href="#" aria-label="Facebook">📘</a>
-                <a href="#" aria-label="Instagram">📷</a>
-                <a href="#" aria-label="WhatsApp">💬</a>
+                <a href="https://www.instagram.com/jstudioaz" target="_blank" aria-label="Instagram">📷</a>
+                <a href="https://www.facebook.com/186932795197579" target="_blank" aria-label="Facebook">👍</a>
+                <a href="https://wa.me/50689643948" target="_blank" aria-label="WhatsApp">💬</a>
             </div>
         </div>
     </footer>
