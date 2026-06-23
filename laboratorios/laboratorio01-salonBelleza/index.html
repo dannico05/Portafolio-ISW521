@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <title>Jireh Studio | Salón de Belleza</title>
-    <meta name="description" content="Jireh Studio – Donde la belleza se encuentra con la armonía. Servicios de cabello, uñas, estética, maquillaje y peinados.">
-    <!-- CSS principal -->
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- Fuentes (Google Fonts) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <meta name="description" content="Jireh Studio – Donde la belleza se encuentra con la armonía. Servicios de cabello, uñas, estética, maquillaje y peinados." />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- ========== HEADER + NAV (FLEXBOX) ========== -->
-    <header class="site-header">
+    <!-- ========== HEADER ========== -->
+    <header class="site-header" id="siteHeader">
         <div class="container header-container">
             <div class="logo">
-                <!-- Logo: si tienes imagen, usa <img>; si no, texto -->
-                <img src="img/logo.png" alt="Logo de Jireh Studio" class="logo-img" width="60" height="60">
+                <img src="img/logo.png" alt="Logo de Jireh Studio" class="logo-img" width="80" height="80" />
                 <div>
                     <h1>Jireh Studio</h1>
-                    <p class="tagline">Belleza & Armonía</p>
+                    <p class="tagline"><i>Belleza & Armonía</i></p>
                 </div>
             </div>
             <nav class="main-nav" aria-label="Navegación principal">
@@ -33,7 +33,6 @@
                     <li><a href="#contacto" class="nav-link">Contacto</a></li>
                 </ul>
             </nav>
-            <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema claro/oscuro">🌙 Modo oscuro</button>
         </div>
     </header>
 
@@ -41,252 +40,161 @@
         <!-- ========== HERO ========== -->
         <section id="inicio" class="hero">
             <div class="container hero-content">
-                <h2>Donde la belleza se encuentra con la armonía</h2>
+                <h2 class="hero-title">Donde la belleza se encuentra con la armonía</h2>
                 <p>En Jireh Studio realzamos tu esencia con técnicas profesionales y productos de alta calidad.</p>
                 <a href="#contacto" class="btn btn-primary">Agendar cita</a>
             </div>
         </section>
 
-        <!-- ========== SERVICIOS (CSS GRID) ========== -->
-        <section id="servicios" class="services">
+        <!-- ========== SERVICIOS ========== -->
+         <section id="servicios" class="services">
             <div class="container">
-                <h2 class="section-title">Nuestros servicios</h2>
+                <h2 class="section-title" tabindex="0">Nuestros servicios</h2>
                 <div class="services-grid">
                     <article class="service-card">
-                        <img src="img/servicio-cabello.webp" alt="Servicio de cabello: cortes, coloración y tratamientos capilares" loading="lazy">
-                        <div class="service-content">
-                            <h3>Cabello</h3>
-                            <p>Cortes, coloración, tratamientos capilares, alisados y más.</p>
-                        </div>
+                        <img src="img/servicio-cabello.webp" alt="Servicio de cabello" loading="lazy" />
+                        <div class="service-content"><h3>Cabello</h3><p>Cortes, coloración y tratamientos.</p></div>
                     </article>
                     <article class="service-card">
-                        <img src="img/servicio-unas.webp" alt="Servicio de uñas: esmaltado, gel, acrílico y cuidado de manos y pies" loading="lazy">
-                        <div class="service-content">
-                            <h3>Uñas</h3>
-                            <p>Esmaltado, gel, acrílico y cuidado de manos y pies.</p>
-                        </div>
+                        <img src="img/servicio-unas.webp" alt="Servicio de uñas" loading="lazy" />
+                        <div class="service-content"><h3>Uñas</h3><p>Esmaltado, gel y acrílico.</p></div>
                     </article>
                     <article class="service-card">
-                        <img src="img/servicio-estetica.webp" alt="Servicio de estética: tratamientos faciales, corporales y aparatología" loading="lazy">
-                        <div class="service-content">
-                            <h3>Estética</h3>
-                            <p>Tratamientos faciales, corporales y aparatología avanzada.</p>
-                        </div>
+                        <img src="img/servicio-estetica.webp" alt="Servicio de estética" loading="lazy" />
+                        <div class="service-content"><h3>Estética</h3><p>Tratamientos faciales y corporales.</p></div>
                     </article>
                     <article class="service-card">
-                        <img src="img/servicio-maquillaje.webp" alt="Servicio de maquillaje: social, de novia y para sesiones fotográficas" loading="lazy">
-                        <div class="service-content">
-                            <h3>Maquillaje</h3>
-                            <p>Maquillaje social, de novia y para sesiones fotográficas.</p>
-                        </div>
+                        <img src="img/servicio-maquillaje.webp" alt="Servicio de maquillaje" loading="lazy" />
+                        <div class="service-content"><h3>Maquillaje</h3><p>Social, novia y fotográfico.</p></div>
                     </article>
                     <article class="service-card">
-                        <img src="img/servicio-peinados.webp" alt="Servicio de peinados: recogidos, ondas, alisados y peinados para eventos" loading="lazy">
-                        <div class="service-content">
-                            <h3>Peinados</h3>
-                            <p>Recogidos, ondas y peinados para eventos.</p>
-                        </div>
+                        <img src="img/servicio-peinados.webp" alt="Servicio de peinados" loading="lazy" />
+                        <div class="service-content"><h3>Peinados</h3><p>Recogidos, ondas y eventos.</p></div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- ========== GALERÍA (15 FOTOS) ========== -->
-        <section id="galeria" class="gallery">
+        <!-- ========== GALERÍA ========== -->
+         <section id="galeria" class="gallery">
             <div class="container">
-                <h2 class="section-title">Nuestro trabajo</h2>
+                <h2 class="section-title" tabindex="0">Nuestro trabajo</h2>
                 <div class="gallery-grid">
-                    <!-- Genera 15 ítems. Reemplaza los src con tus imágenes reales -->
                     <figure class="gallery-item">
-                        <img src="img/galeria1.webp" alt="Cabellera larga y lacia de tono cobrizo vibrante" loading="lazy">
-                        <figcaption>Cabello cobrizo vibrante</figcaption>
+                        <img src="img/galeria1.webp" alt="Cabello cobrizo vibrante" loading="lazy" />
+                        <figcaption>Cabello cobrizo</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/galeria2.webp" alt="Uñas acrílicas con diseño dorado, flores 3D y cristales" loading="lazy">
-                        <figcaption>Uñas Acrílicas</figcaption>
+                        <img src="img/galeria2.webp" alt="Uñas acrílicas doradas" loading="lazy" />
+                        <figcaption>Uñas doradas</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/galeria3.webp" alt="Cabello liso y brillante con nanoplastia" loading="lazy">
+                        <img src="img/galeria3.webp" alt="Nanoplastia" loading="lazy" />
                         <figcaption>Nanoplastia</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/galeria4.webp" alt="Maquillaje nupcial con tonos rosados y peinado recogido" loading="lazy">
+                        <img src="img/galeria4.webp" alt="Maquillaje novia" loading="lazy" />
                         <figcaption>Maquillaje novia</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/galeria5.webp" alt="Semirrecogido romántico con accesorio plateado y ondas" loading="lazy">
-                        <figcaption>Semirrecogido romántico</figcaption>
+                        <img src="img/galeria5.webp" alt="Semirrecogido romántico" loading="lazy" />
+                        <figcaption>Semirrecogido</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/galeria6.webp" alt="Tinte de fantasía azul eléctrico en mechones frontales" loading="lazy">
+                        <img src="img/galeria6.webp" alt="Azul eléctrico" loading="lazy" />
                         <figcaption>Azul eléctrico</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/galeria7.webp" alt="Cabello largo y lacio con reflejos rubios y castaños" loading="lazy">
+                        <img src="img/galeria7.webp" alt="Reflejos rubios" loading="lazy" />
                         <figcaption>Reflejos rubios</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/galeria8.webp" alt="Balayage en cabello rizado con tonos rubio ceniza y oscuro" loading="lazy">
-                        <figcaption>Balayage en rizos</figcaption>
+                        <img src="img/galeria8.webp" alt="Balayage en rizos" loading="lazy" />
+                        <figcaption>Balayage</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/galeria9.webp" alt="Maquillaje social elegante con mirada resaltada y acabado luminoso" loading="lazy">
+                        <img src="img/galeria9.webp" alt="Maquillaje social" loading="lazy" />
                         <figcaption>Maquillaje social</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/galeria10.webp" alt="Uñas almond con puntas francesas grises y detalles dorados" loading="lazy">
+                        <img src="img/galeria10.webp" alt="Uñas almendradas" loading="lazy" />
                         <figcaption>Uñas almendradas</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/galeria11.webp" alt="Dispositivo de radiofrecuencia facial para tensar la piel" loading="lazy">
-                        <figcaption>Radiofrecuencia facial</figcaption>
+                        <img src="img/galeria11.webp" alt="Radiofrecuencia" loading="lazy" />
+                        <figcaption>Radiofrecuencia</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/galeria12.webp" alt="Cabello largo con reflejos rubios y castaños sobre fondo floral" loading="lazy">
+                        <img src="img/galeria12.webp" alt="Reflejos claros" loading="lazy" />
                         <figcaption>Reflejos claros</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/galeria13.webp" alt="Cabello largo y shaggy con reflejos rubios" loading="lazy">
+                        <img src="img/galeria13.webp" alt="Corte shag" loading="lazy" />
                         <figcaption>Corte shag</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/galeria14.webp" alt="Corte pixie plateado con chaleco utility verde oliva" loading="lazy">
-                        <figcaption>Corte pixie plateado</figcaption>
+                        <img src="img/galeria14.webp" alt="Corte pixie plateado" loading="lazy" />
+                        <figcaption>Pixie plateado</figcaption>
                     </figure>
                     <figure class="gallery-item">
-                        <img src="img/galeria15.webp" alt="Corte Bob con balayage rubio brillante" loading="lazy">
-                        <figcaption>Bob con balayage</figcaption>
+                        <img src="img/galeria15.webp" alt="Bob con balayage" loading="lazy" />
+                        <figcaption>Bob balayage</figcaption>
                     </figure>
                 </div>
             </div>
         </section>
 
         <!-- ========== TESTIMONIOS (SLIDER) ========== -->
-        <section id="testimonios" class="testimonials-slider" aria-label="Testimonios de clientes">
+         <section id="testimonios" class="testimonials-slider" aria-label="Testimonios de clientes">
             <div class="container">
-                <h2 class="section-title">Lo que dicen nuestras clientas</h2>
+                <h2 class="section-title" tabindex="0">Lo que dicen nuestras clientas</h2>
                 <div class="slider-container">
                     <div class="slider-track" id="sliderTrack">
                         <!-- Slide 1 -->
                         <article class="slide" role="group" aria-label="Testimonio 1 de 6">
                             <div class="testimonial-content">
-                                <img src="img/cliente1.webp" alt="Foto de María González" class="avatar" loading="lazy">
-                                <blockquote>
-                                    "Quiero compartir mi experiencia con Yensi.
-                                    Yo venía de un procedimiento realizado en otro salón donde me dañaron muchísimo el cabello. 
-                                    Estaba súper asustada porque en varios lugares me dijeron que mi cabello casi no tenía solución 
-                                    debido a las decoloraciones y al riesgo de que siguiera dañándose o incluso quebrándose.
-                                    Fue entonces cuando me recomendaron a Yensi, y desde el primer momento me transmitió confianza 
-                                    y me recordó que todo tiene solución. Con mucha paciencia, dedicación y amor por su trabajo, 
-                                    logró devolverle la vida a mi cabello. Desde ese día no cambio a Yensi por nada del mundo. 
-                                    No solo transformó mi cabello, sino también mi confianza. Ahora ella es la persona en quien 
-                                    confío para cuidar mi cabello y siempre estaré agradecida por todo lo que hizo por mí 🫶🏼"
-                                </blockquote>
+                                <img src="img/cliente1.webp" alt="Ashly" class="avatar" loading="lazy" />
+                                <blockquote>"Yensi me devolvió la confianza y la vida a mi cabello. ¡Recomendadísima!"</blockquote>
                                 <cite>— Ashly Rodríguez Vega</cite>
                             </div>
                         </article>
                         <!-- Slide 2 -->
                         <article class="slide" role="group" aria-label="Testimonio 2 de 6">
                             <div class="testimonial-content">
-                                <img src="img/cliente2.webp" alt="Foto de Karla Rodríguez" class="avatar" loading="lazy">
-                                <blockquote>
-                                    "Quiero recomendar a Jireh Studio por su excelente atención y profesionalismo. 
-                                    Desde el primer momento me hicieron sentir bienvenida, brindando un servicio personalizado 
-                                    y de alta calidad. El ambiente es agradable, limpio y acogedor, y se nota el compromiso 
-                                    que tienen con cada detalle para que sus clientes se sientan satisfechos.
-                                    Destaco especialmente la amabilidad, la dedicación y los excelentes resultados en cada servicio. 
-                                    Sin duda, Jireh Studio es un lugar en el que se puede confiar y que recomiendo a 
-                                    cualquier persona que desee consentirse y recibir una atención excepcional.
-                                    ¡Gracias a Jireh Studio por hacer de cada visita una experiencia maravillosa!"
-                                </blockquote>
+                                <img src="img/cliente2.webp" alt="Shirley" class="avatar" loading="lazy" />
+                                <blockquote>"Excelente atención, ambiente acogedor y resultados impecables."</blockquote>
                                 <cite>— Shirley Salazar Chavarria</cite>
                             </div>
                         </article>
                         <!-- Slide 3 -->
                         <article class="slide" role="group" aria-label="Testimonio 3 de 6">
                             <div class="testimonial-content">
-                                <img src="img/cliente3.webp" alt="Foto de Laura Méndez" class="avatar" loading="lazy">
-                                <blockquote>
-                                    "Mi nombre es Kimberly y quiero compartir mi experiencia y recomendar a una excelente 
-                                    estilista Yensi Fallas que ha estado a cargo de mi cabello desde el año 2013. 
-                                    Durante todos estos años, ha demostrado un gran profesionalismo, dedicación y 
-                                    amor por su trabajo, logrando siempre que mi cabello luzca hermoso y saludable.
-                                    
-                                    A lo largo de este tiempo me ha realizado diferentes procesos, desde decoloraciones, 
-                                    alisados, keratinas y cortes de cabello, hasta cambios de imagen que siempre han 
-                                    cumplido con mis expectativas. Lo que más valoro es que, sin importar el procedimiento, 
-                                    siempre ha priorizado el cuidado y la salud de mi cabello.
-
-                                    Gracias a sus conocimientos y experiencia, ha conseguido que mi cabello se mantenga sano, 
-                                    fuerte y brillante, incluso después de tratamientos que requieren un manejo cuidadoso. 
-                                    Además, siempre ha sabido interpretar exactamente lo que me gusta y asesorarme para obtener 
-                                    los mejores resultados.
-                                    
-                                    Por esa razón, durante todos estos años he confiado únicamente en ella para el cuidado de mi 
-                                    cabello. Su compromiso, calidad de trabajo y atención personalizada me han dado la 
-                                    tranquilidad de saber que estoy en las mejores manos.
-                                    
-                                    La recomiendo con total confianza a cualquier persona que busque una estilista profesional, 
-                                    responsable y apasionada por lo que hace. Mi experiencia ha sido excelente desde 2013 y 
-                                    sigo eligiéndola porque siempre supera mis expectativas."
-                                </blockquote>
-                                <cite>— Kimberly Valverde, clienta desde 2013</cite>
+                                <img src="img/cliente3.webp" alt="Kimberly" class="avatar" loading="lazy" />
+                                <blockquote>"Desde 2013 confío solo en Yensi. Mi cabello siempre luce sano."</blockquote>
+                                <cite>— Kimberly Valverde</cite>
                             </div>
                         </article>
                         <!-- Slide 4 -->
-                            <article class="slide" role="group" aria-label="Testimonio 4 de 6">
+                        <article class="slide" role="group" aria-label="Testimonio 4 de 6">
                             <div class="testimonial-content">
-                                <img src="img/cliente4.webp" alt="Foto de Laura Méndez" class="avatar" loading="lazy">
-                                <blockquote>
-                                    "Quiero compartir mi experiencia en el salón Jireh Studio. 
-                                    Estoy muy satisfecha con todos los resultados obtenidos; 
-                                    el trabajo quedó excelente y superó mis expectativas. 
-                                    Además, destaco la atención, amabilidad y profesionalismo de la estilista, 
-                                    quien me brindó un trato muy agradable y se preocupó por cada detalle. 
-                                    Recomiendo totalmente el salón por la calidad del servicio y la excelente atención."
-                                </blockquote>
+                                <img src="img/cliente4.webp" alt="Marjorie" class="avatar" loading="lazy" />
+                                <blockquote>"Superó mis expectativas. Profesionalismo de primera."</blockquote>
                                 <cite>— Marjorie Aguilar Esquivel</cite>
                             </div>
                         </article>
                         <!-- Slide 5 -->
                         <article class="slide" role="group" aria-label="Testimonio 5 de 6">
                             <div class="testimonial-content">
-                                <img src="img/cliente5.webp" alt="Foto de Laura Méndez" class="avatar" loading="lazy">
-                                <blockquote>
-                                    "Les recomiendo a mi estilista Yensi Fallas.
-                                    Tengo pelo lacio, negro y grueso, y vivía peleando con el frizz y 
-                                    la humedad de San José. Me hice keratina con ella y fue lo mejor que le 
-                                    pude hacer a mi cabello.
-                                    
-                                    Primero me hizo diagnóstico real: me explicó si mi pelo podía aguantar la keratina 
-                                    sin perder el movimiento natural del lacio. El proceso fue súper cuidadoso, 
-                                    cero apuro, y el salón huele delicioso.
-                                    
-                                    Resultado: 3 meses después sigo con el pelo lacio espejo, brillante, 
-                                    sin frizz ni esponjado. Se me seca el doble de rápido, cero plancha diaria. 
-                                    Y lo mejor es que no me dejó el pelo tieso/plastificado como otras keratinas. 
-                                    Sigue cayendo natural y con movimiento.
-                                    
-                                    Para el negro me dio un shampoo y mascarilla para que no se me lave el color 
-                                    ni se ponga rojizo. 
-                                    
-                                    Si quieren un cabello lacio, negro y quieren despedirse del frizz sin maltratarlo, 
-                                    vayan con ella. Vale cada colón."
-                                </blockquote>
+                                <img src="img/cliente5.webp" alt="Joseth" class="avatar" loading="lazy" />
+                                <blockquote>"Keratinización: cabello lacio y sin frizz por meses."</blockquote>
                                 <cite>— Joseth Guido Alfaro</cite>
                             </div>
                         </article>
                         <!-- Slide 6 -->
                         <article class="slide" role="group" aria-label="Testimonio 6 de 6">
                             <div class="testimonial-content">
-                                <img src="img/cliente6.webp" alt="Foto de Laura Méndez" class="avatar" loading="lazy">
-                                <blockquote>
-                                    "Hola soy Rebeca y vivo en Guayabo de Bagaces para mi ha sido un placer poner mi cabello 
-                                    en las mágicas manos de Yenci Fallas. Les comento tambien soy una mujer en la 
-                                    perimenopausia y ella ha sido tan atenta a mi situación sin dejar atrás el profesionalismo 
-                                    el calor humano, y su maravillosa forma de ser con mi persona. 
-                                    Ahora mi cabello luce con vida y listo para seguir en esta etapa. Bendiciones"
-                                </blockquote>
+                                <img src="img/cliente6.webp" alt="Rebeca" class="avatar" loading="lazy" />
+                                <blockquote>"Yensi es profesional y cálida. Mi cabello luce con vida."</blockquote>
                                 <cite>— Rebeca Méndez Salazar</cite>
                             </div>
                         </article>
@@ -295,172 +203,136 @@
                     <button class="slider-btn prev" id="prevBtn" aria-label="Testimonio anterior">&#10094;</button>
                     <button class="slider-btn next" id="nextBtn" aria-label="Testimonio siguiente">&#10095;</button>
                 </div>
-                <!-- Indicadores (puntos) -->
-                <div class="slider-dots" id="sliderDots"></div>
+                <!-- Puntos (indicadores) -->
+                <div class="slider-dots" id="sliderDots" role="tablist" aria-label="Controles del carrusel"></div>
             </div>
         </section>
 
         <!-- ========== MATERIALES Y PRODUCTOS ========== -->
-        <section id="materiales" class="materials">
+         <section id="materiales" class="materials">
             <div class="container">
-                <h2 class="section-title">Nuestros productos y herramientas</h2>
-                <!-- Subsección: Herramientas/Marcas -->
-                <h3 class="subsection-title">Marcas y herramientas que usamos</h3>
+                <h2 class="section-title" tabindex="0">Nuestros productos y herramientas</h2>
+                <h3 class="subsection-title" tabindex="0">Marcas y herramientas que usamos</h3>
                 <div class="materials-grid">
-                    <div class="material-card">
-                        <img src="img/material1.webp" alt="Plancha Babyliss" loading="lazy">
-                        <h4>Babyliss</h4>
-                        <p>Secadores, planchas y crioterapia (cepillo en frío).</p>
-                    </div>
-                    <div class="material-card">
-                        <img src="img/material2.webp" alt="Secadora Olivia Garden" loading="lazy">
-                        <h4>Olivia Garden</h4>
-                        <p>Secadores y planchas de alta calidad.</p>
-                    </div>
-                    <div class="material-card">
-                        <img src="img/material3.webp" alt="Láser cauterizador Uki Sonic" loading="lazy">
-                        <h4>Uki Sonic</h4>
-                        <p>Plancha láser cauterizadora para tratamientos.</p>
-                    </div>
-                    <div class="material-card">
-                        <img src="img/material4.webp" alt="Esmaltes Gloss Over" loading="lazy">
-                        <h4>Gloss Over</h4>
-                        <p>Esmaltes profesionales para uñas.</p>
-                    </div>
-                    <div class="material-card">
-                        <img src="img/material5.webp" alt="Aparatología estética" loading="lazy">
-                        <h4>Aparatología</h4>
-                        <p>Lipolaser, radiofrecuencia, dermabrasión y más.</p>
-                    </div>
-                    <div class="material-card">
-                        <img src="img/material6.webp" alt="Productos Filip Martin" loading="lazy">
-                        <h4>Filip Martin</h4>
-                        <p>Línea de shampoo y ampollas para caída capilar.</p>
-                    </div>
+                    <div class="material-card"><img src="img/material1.webp" alt="Babyliss" loading="lazy" /><h4>Babyliss</h4><p>Secadores, planchas y crioterapia.</p></div>
+                    <div class="material-card"><img src="img/material2.webp" alt="Olivia Garden" loading="lazy" /><h4>Olivia Garden</h4><p>Secadores y planchas de alta calidad.</p></div>
+                    <div class="material-card"><img src="img/material3.webp" alt="Uki Sonic" loading="lazy" /><h4>Uki Sonic</h4><p>Plancha láser cauterizadora.</p></div>
+                    <div class="material-card"><img src="img/material4.webp" alt="Gloss Over" loading="lazy" /><h4>Gloss Over</h4><p>Esmaltes profesionales para uñas.</p></div>
+                    <div class="material-card"><img src="img/material5.webp" alt="Aparatología" loading="lazy" /><h4>Aparatología</h4><p>Lipolaser, radiofrecuencia, dermabrasión.</p></div>
+                    <div class="material-card"><img src="img/material6.webp" alt="Filip Martin" loading="lazy" /><h4>Filip Martin</h4><p>Línea de shampoo y ampollas para caída.</p></div>
                 </div>
 
-                <!-- Subsección: Productos en venta -->
-                <h3 class="subsection-title" style="margin-top: 3rem;">Productos que ofrecemos en venta</h3>
+                <h3 class="subsection-title" style="margin-top: 3rem;" tabindex="0">Productos que ofrecemos en venta</h3>
                 <div class="products-grid">
-                    <div class="product-card">
-                        <img src="img/producto1.webp" alt="Shampoo Filip Martin contra caída" loading="lazy">
-                        <h4>Shampoo Filip Martin</h4>
-                        <p class="price">₡37.900</p>
-                        <p>Ayuda con la pérdida de cabello y afecciones capilares, con principios activos naturales.</p>
-                    </div>
-                    <div class="product-card">
-                        <img src="img/producto2.webp" alt="Ampolla en spray Filip Martin" loading="lazy">
-                        <h4>Ampolla spray Filip Martin</h4>
-                        <p class="price">₡25.900</p>
-                        <p>Tratamiento contra la caída capilar, de aplicación directa.</p>
-                    </div>
-                    <div class="product-card">
-                        <img src="img/producto3.webp" alt="Protector térmico Firense" loading="lazy">
-                        <h4>Protector térmico Firense</h4>
-                        <p class="price">₡19.500</p>
-                        <p>Repara, sella puntas y combate el frizz.</p>
-                    </div>
-                    <div class="product-card">
-                        <img src="img/producto4.webp" alt="Shampoo queratina Firense" loading="lazy">
-                        <h4>Shampoo queratina Firense</h4>
-                        <p class="price">₡16.900</p>
-                        <p>Mantenimiento de alisos, con queratina.</p>
-                    </div>
-                    <div class="product-card">
-                        <img src="img/producto5.webp" alt="Línea Terra Lendan para colochos" loading="lazy">
-                        <h4>Línea Terra Lendan (Colochos)</h4>
-                        <p class="price">Desde ₡19.900</p>
-                        <p>Shampoo, activador, gel definición, acondicionador, protector térmico/solar y aceite.</p>
-                    </div>
-                    <div class="product-card">
-                        <img src="img/producto6.webp" alt="Línea Terra Lendan para lisas" loading="lazy">
-                        <h4>Línea Terra Lendan (Lisos)</h4>
-                        <p class="price">Desde ₡19.900</p>
-                        <p>Shampoo, mascarilla, protector térmico/solar, acondicionador.</p>
-                    </div>
-                    <div class="product-card">
-                        <img src="img/producto7.webp" alt="Línea Cuticle Restore" loading="lazy">
-                        <h4>Línea Cuticle Restore</h4>
-                        <p class="price">Shampoo ₡16.900 / Mascarilla ₡19.900</p>
-                        <p>Tratamiento reparador de cutículas.</p>
-                    </div>
+                    <div class="product-card"><img src="img/producto1.webp" alt="Shampoo Filip Martin" loading="lazy" /><h4>Shampoo Filip Martin</h4><p class="price">₡37.900</p><p>Contra caída, activos naturales.</p></div>
+                    <div class="product-card"><img src="img/producto2.webp" alt="Ampolla Filip Martin" loading="lazy" /><h4>Ampolla spray</h4><p class="price">₡25.900</p><p>Tratamiento anticaída.</p></div>
+                    <div class="product-card"><img src="img/producto3.webp" alt="Protector Firense" loading="lazy" /><h4>Protector térmico</h4><p class="price">₡19.500</p><p>Repara, sella puntas y frizz.</p></div>
+                    <div class="product-card"><img src="img/producto4.webp" alt="Shampoo queratina" loading="lazy" /><h4>Shampoo queratina</h4><p class="price">₡16.900</p><p>Mantenimiento de alisos.</p></div>
+                    <div class="product-card"><img src="img/producto5.webp" alt="Línea Terra colochos" loading="lazy" /><h4>Terra Lendan (Colochos)</h4><p class="price">Desde ₡19.900</p><p>Shampoo, activador, gel.</p></div>
+                    <div class="product-card"><img src="img/producto6.webp" alt="Línea Terra lisos" loading="lazy" /><h4>Terra Lendan (Lisos)</h4><p class="price">Desde ₡19.900</p><p>Shampoo, mascarilla, protector.</p></div>
+                    <div class="product-card"><img src="img/producto7.webp" alt="Cuticle Restore" loading="lazy" /><h4>Cuticle Restore</h4><p class="price">Shampoo ₡16.900</p><p>Reparador de cutículas.</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- ========== UBICACIÓN (MAPA) ========== -->
+        <!-- ========== UBICACIÓN + VIDEO (dos columnas) ========== -->
         <section id="ubicacion" class="location">
             <div class="container">
-                <h2 class="section-title">Encuéntranos</h2>
-                <div class="map-container">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.123456789!2d-84.343481!3d10.374848!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1234567890abcdef!2sJireh%20Studio!5e0!3m2!1ses!2scr!4v1234567890" 
-                        width="100%" 
-                        height="400" 
-                        style="border:0; border-radius: 20px;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Mapa de ubicación de Jireh Studio">
-                    </iframe>
+                <h2 class="section-title" tabindex="0">Visítanos</h2>
+                <div class="location-grid">
+                    <div class="location-col">
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d473.0602341625201!2d-84.34389841356987!3d10.3748321249213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa06565540b6d3b%3A0xcc99a9cad2d7e891!2sJireh%20Studio%20-%20Sal%C3%B3n%20de%20belleza!5e1!3m2!1ses-419!2sus!4v1782230978705!5m2!1ses-419!2sus" width="100%" height="350" style="border:0; border-radius: var(--radius);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de ubicación de Jireh Studio"></iframe>
+                        </div>
+                        <p class="address"><strong>Dirección:</strong> Frente al Banco Popular, contiguo a Cafetería Forelo, Aguas Zarcas, San Carlos, Alajuela.</p>
+                        <p class="coordinates"><strong>Coordenadas:</strong> 10.374848, -84.343481</p>
+                    </div>
+                    <div class="location-col">
+                        <div class="video-container">
+                            <video controls preload="metadata" poster="img/video-poster.jpg" width="100%" height="300" aria-label="Video de nuestro salón">
+                                <source src="img/salon-tour.mp4" type="video/mp4">
+                                <source src="img/salon-tour.webm" type="video/webm">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                        </div>
+                        <h3 class="video-title">Conoce nuestro salón</h3>
+                        <p class="video-caption">Un espacio acogedor y profesional para realzar tu belleza.</p>
+                    </div>
                 </div>
-                <p class="address"><strong>Dirección:</strong> Frente al Banco Popular, contiguo a Cafetería Forelo, Aguas Zarcas, San Carlos, Alajuela, Costa Rica.</p>
-                <p class="coordinates"><strong>Coordenadas:</strong> 10.374848, -84.343481</p>
-                <!-- Enlace para abrir en Google Maps y obtener rutas -->
-                <p style="text-align: center; margin-top: 1rem;">
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=10.374848,-84.343481" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 0.6rem 1.5rem; font-size: 0.9rem;">
-                        Cómo llegar (Abrir en Google Maps)
-                    </a>
-                </p>
             </div>
         </section>
 
         <!-- ========== CONTACTO ========== -->
         <section id="contacto" class="contact">
             <div class="container">
-                <h2 class="section-title">Contacto</h2>
+                <h2 class="section-title" tabindex="0">Contacto</h2>
                 <div class="contact-grid">
                     <div class="contact-info">
                         <h3>Horarios de atención</h3>
                         <p><strong>Lunes a sábado:</strong> 10:00 am – 6:00 pm</p>
                         <p><strong>Teléfono / WhatsApp:</strong> <a href="https://wa.me/50689643948" target="_blank">+506 8964-3948</a></p>
                         <p><strong>Correo electrónico:</strong> <a href="mailto:yensi.f.a@gmail.com">yensi.f.a@gmail.com</a></p>
-                        <p><strong>Síguenos en redes:</strong></p>
+                        <p><strong>Contáctanos:</strong></p>
                         <div class="social-links">
-                            <a href="https://www.instagram.com/jstudioaz" target="_blank" aria-label="Instagram" class="social-icon">📷</a>
-                            <a href="https://www.facebook.com/186932795197579" target="_blank" aria-label="Facebook" class="social-icon">ⓕ</a>
-                            <a href="https://wa.me/50689643948" target="_blank" aria-label="WhatsApp" class="social-icon">💬</a>
+                            <a href="https://www.instagram.com/jstudioaz" target="_blank" aria-label="Instagram"><img src="img/instagram.png" alt="Instagram" width="32" height="32" class="social-icon-img" /></a>
+                            <a href="https://www.facebook.com/186932795197579" target="_blank" aria-label="Facebook"><img src="img/facebook.png" alt="Facebook" width="32" height="32" class="social-icon-img" /></a>
+                            <a href="https://wa.me/50689643948" target="_blank" aria-label="WhatsApp"><img src="img/whatsapp.png" alt="WhatsApp" width="32" height="32" class="social-icon-img" /></a>
                         </div>
                     </div>
                     <form action="#" method="post" class="contact-form">
                         <label for="nombre">Nombre:</label>
-                        <input type="text" id="nombre" name="nombre" required aria-required="true" placeholder="Tu nombre">
-                        
+                        <input type="text" id="nombre" name="nombre" required aria-required="true" placeholder="Tu nombre" />
                         <label for="email">Correo electrónico:</label>
-                        <input type="email" id="email" name="email" required aria-required="true" placeholder="tucorreo@ejemplo.com">
-                        
+                        <input type="email" id="email" name="email" required aria-required="true" placeholder="tucorreo@ejemplo.com" />
                         <label for="mensaje">Mensaje:</label>
                         <textarea id="mensaje" name="mensaje" rows="4" required aria-required="true" placeholder="¿En qué servicio estás interesado?"></textarea>
-                        
                         <button type="submit" class="btn btn-primary">Enviar mensaje</button>
                     </form>
                 </div>
             </div>
         </section>
-        </main>
+    </main>
 
-        <footer class="site-footer">
-            <div class="container footer-content">
-                <p>&copy; 2026 Jireh Studio. Todos los derechos reservados.</p>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/jstudioaz" target="_blank" aria-label="Instagram" class="social-icon">📷</a>
-                    <a href="https://www.facebook.com/186932795197579" target="_blank" aria-label="Facebook" class="social-icon">ⓕ</a>
-                    <a href="https://wa.me/50689643948" target="_blank" aria-label="WhatsApp" class="social-icon">💬</a>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 Jireh Studio. Todos los derechos reservados.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/jstudioaz" target="_blank" aria-label="Instagram"><img src="img/instagram.png" alt="Instagram" width="28" height="28" class="social-icon-img" /></a>
+                <a href="https://www.facebook.com/186932795197579" target="_blank" aria-label="Facebook"><img src="img/facebook.png" alt="Facebook" width="28" height="28" class="social-icon-img" /></a>
+                <a href="https://wa.me/50689643948" target="_blank" aria-label="WhatsApp"><img src="img/whatsapp.png" alt="WhatsApp" width="28" height="28" class="social-icon-img" /></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== BOTÓN DE ACCESIBILIDAD FLOTANTE ===== -->
+    <div id="accessibilityPanel" class="accessibility-panel" aria-label="Panel de accesibilidad">
+        <button id="accessToggle" class="access-toggle" aria-label="Abrir panel de accesibilidad">
+            <img src="img/accesibilidad.png" alt="Accesibilidad" width="32" height="32" />
+        </button>
+        <div class="access-options" id="accessOptions" style="display: none;">
+            <div class="access-group">
+                <span class="access-label">Tamaño de fuente</span>
+                <div class="access-buttons">
+                    <button data-size="small" class="access-btn" aria-label="Fuente pequeña">A</button>
+                    <button data-size="medium" class="access-btn active" aria-label="Fuente mediana">A</button>
+                    <button data-size="large" class="access-btn" aria-label="Fuente grande">A</button>
                 </div>
             </div>
-        </footer>
+            <div class="access-group">
+                <span class="access-label">Tema</span>
+                <div class="access-buttons">
+                    <button id="accessDarkMode" class="access-btn" aria-label="Alternar modo oscuro">🌙 Modo oscuro</button>
+                </div>
+            </div>
+            <div class="access-group">
+                <span class="access-label">Contraste</span>
+                <div class="access-buttons">
+                    <button id="accessHighContrast" class="access-btn" aria-label="Alternar alto contraste">🔆 Alto contraste</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- JavaScript -->
     <script src="js/script.js"></script>
 </body>
 </html>
