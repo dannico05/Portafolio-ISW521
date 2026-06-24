@@ -28,8 +28,8 @@
 
     let currentIndex = 1;
     let autoSlideInterval = null;
-    const AUTO_INTERVAL = 7000;
-    let isFocusChange = false; // Para evitar bucles
+    const AUTO_INTERVAL = 4000; // 4 segundos
+    let isFocusChange = false;
 
     function createDots() {
         dotsContainer.innerHTML = '';
@@ -42,13 +42,11 @@
             dot.classList.toggle('active', i === 0);
             dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
             
-            // Evento focus: cambiar al slide correspondiente
             dot.addEventListener('focus', function() {
                 if (!isFocusChange) {
                     isFocusChange = true;
                     goToSlide(i + 1);
                     resetAutoSlide();
-                    // Después de cambiar, actualizar el foco al punto activo
                     setTimeout(() => {
                         this.focus();
                         isFocusChange = false;
@@ -56,7 +54,6 @@
                 }
             });
 
-            // Evento click (para mouse)
             dot.addEventListener('click', function(e) {
                 e.preventDefault();
                 goToSlide(i + 1);
@@ -64,7 +61,6 @@
                 this.focus();
             });
 
-            // Evento teclado (Enter/Space)
             dot.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -83,7 +79,6 @@
         track.style.transform = `translateX(-${index * 100}%)`;
         currentIndex = index;
 
-        // Actualizar dots
         const realSlides = slides.length;
         let realIndex = (index - 1 + realSlides) % realSlides;
         const dots = dotsContainer.querySelectorAll('button');
@@ -106,12 +101,18 @@
     function resetAutoSlide() {
         if (autoSlideInterval) {
             clearInterval(autoSlideInterval);
-            autoSlideInterval = setInterval(nextSlide, AUTO_INTERVAL);
+            autoSlideInterval = null;
         }
+        autoSlideInterval = setInterval(nextSlide, AUTO_INTERVAL);
+        console.log('Auto slide reiniciado');
     }
     function startAutoSlide() {
-        if (autoSlideInterval) clearInterval(autoSlideInterval);
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = null;
+        }
         autoSlideInterval = setInterval(nextSlide, AUTO_INTERVAL);
+        console.log('Auto slide iniciado');
     }
 
     // Loop infinito
@@ -156,22 +157,39 @@
         });
     }
 
-    // Pausa en hover/focus
     const sliderContainer = document.querySelector('.slider-container');
     if (sliderContainer) {
         sliderContainer.addEventListener('mouseenter', () => {
-            if (autoSlideInterval) clearInterval(autoSlideInterval);
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = null;
+                console.log('Auto slide pausado (hover)');
+            }
         });
-        sliderContainer.addEventListener('mouseleave', startAutoSlide);
+        sliderContainer.addEventListener('mouseleave', () => {
+            if (!autoSlideInterval) {
+                startAutoSlide();
+                console.log('Auto slide reanudado (hover)');
+            }
+        });
         sliderContainer.addEventListener('focusin', () => {
-            if (autoSlideInterval) clearInterval(autoSlideInterval);
+            if (autoSlideInterval) {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = null;
+                console.log('Auto slide pausado (focus)');
+            }
         });
-        sliderContainer.addEventListener('focusout', startAutoSlide);
+        sliderContainer.addEventListener('focusout', () => {
+            if (!autoSlideInterval) {
+                startAutoSlide();
+                console.log('Auto slide reanudado (focus)');
+            }
+        });
     }
 
     createDots();
     goToSlide(1, true);
-    startAutoSlide();
+    setTimeout(startAutoSlide, 100);
 })();
 
 // ===== FORMULARIO =====

@@ -199,33 +199,38 @@ h3:focus-visible {
     border-radius: 4px;
 }
 
-/* ===== SERVICIOS (GRID) ===== */
+/* ===== SERVICIOS (FLEXBOX) ===== */
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
+    justify-content: center;
     margin: 2rem 0;
-    justify-items: center;
 }
+
 .service-card {
+    flex: 0 0 calc(33.333% - 2rem); /* 3 columnas en escritorio */
+    max-width: 300px;
+    min-width: 200px;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: var(--radius);
     overflow: hidden;
     transition: transform 0.2s, box-shadow 0.2s;
-    width: 100%;
-    max-width: 300px;
 }
+
 .service-card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow);
 }
+
 .service-card img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     background: #f5f5f5;
 }
+
 .service-content {
     padding: 1.5rem 1rem;
     text-align: center;
@@ -361,21 +366,17 @@ h3:focus-visible {
     outline: 2px solid var(--btn-bg);
 }
 
-/* ===== MATERIALES Y PRODUCTOS ===== */
+/* ===== MATERIALES ===== */
 .materials { padding: 2rem 0; }
+
 .materials-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-bottom: 2rem;
 }
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-bottom: 2rem;
-}
-.material-card, .product-card {
+
+.material-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: var(--radius);
@@ -383,17 +384,54 @@ h3:focus-visible {
     text-align: center;
     transition: transform 0.2s, box-shadow 0.2s;
 }
-.material-card:hover, .product-card:hover {
+.material-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow);
 }
-.material-card img, .product-card img {
+
+.material-card img {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: contain;
     background: #f5f5f5;
 }
-.material-card h4, .product-card h4 {
+.material-card h4 {
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+/* ===== PRODUCTOS (FLEXBOX) ===== */
+.products-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.product-card {
+    flex: 0 0 calc(25% - 2rem);
+    max-width: 250px;
+    min-width: 180px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.product-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    background: #f5f5f5;
+}
+.product-card h4 {
     font-size: 1.1rem;
     margin: 0.5rem 0;
 }
@@ -615,32 +653,41 @@ h3:focus-visible {
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1024px) {
-    .services-grid { grid-template-columns: repeat(3, 1fr); }
-    .products-grid { grid-template-columns: repeat(4, 1fr); }
-}
 @media (max-width: 768px) {
     .header-container { flex-direction: column; text-align: center; }
     .nav-list { gap: 1rem; flex-wrap: wrap; justify-content: center; }
     .hero h2 { font-size: 2rem; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
     .materials-grid { grid-template-columns: repeat(2, 1fr); }
-    .products-grid { grid-template-columns: repeat(2, 1fr); }
     .slider-btn { font-size: 1.5rem; padding: 0.3rem 0.7rem; }
     .testimonial-content blockquote { font-size: 1rem; }
     .location-grid { grid-template-columns: 1fr; gap: 2rem; }
+    
+    /* Ajustes para servicios (FLEX) */
+    .services-grid {
+        gap: 1rem;
+    }
+    .service-card {
+        flex: 0 0 calc(50% - 1rem); /* 2 columnas */
+        max-width: 220px;
+    }
+    
+    /* Ajustes para productos (FLEX) */
+    .products-grid { gap: 1rem; }
+    .product-card {
+        flex: 0 0 calc(50% - 1rem);
+        max-width: 200px;
+    }
 }
+
 @media (max-width: 480px) {
     .container { padding: 0 1rem; }
     .hero { padding: 2rem 0; }
     .hero h2 { font-size: 1.6rem; }
     .section-title { font-size: 1.6rem; }
     .gallery-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-    .services-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
     .materials-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .products-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
     .footer-content { flex-direction: column; text-align: center; }
     .btn { padding: 0.6rem 1.2rem; }
     .slider-btn { font-size: 1.2rem; padding: 0.2rem 0.5rem; }
@@ -652,8 +699,20 @@ h3:focus-visible {
         width: 60px;
         height: 60px;
     }
-}
-:focus-visible {
-    outline: 3px solid var(--btn-bg);
-    outline-offset: 3px;
+    
+    /* Ajustes para servicios (FLEX) */
+    .services-grid {
+        gap: 0.8rem;
+    }
+    .service-card {
+        flex: 0 0 calc(50% - 0.8rem); /* 2 columnas en móvil */
+        max-width: 180px;
+    }
+    
+    /* Ajustes para productos (FLEX) */
+    .products-grid { gap: 0.8rem; }
+    .product-card {
+        flex: 0 0 calc(50% - 0.8rem);
+        max-width: 180px;
+    }
 }
