@@ -470,8 +470,7 @@ const respuesta = {
     }
 };
 
-const nombre =
-    respuesta?.data?.usuario?.nombre;
+const nombre = respuesta?.data?.usuario?.nombre;
 
 console.log(nombre); // undefined
 ```
