@@ -189,7 +189,7 @@ export const loadTicker = async () => {
                 // Si hay datos en caché, ya los mostró, solo mostramos error en consola
                 console.warn('Error en polling:', error.message);
                 // Mostramos un toast de error leve
-                showToast('⚠️ Error al actualizar marcadores', 'warning', 2000);
+                showToast('Error al actualizar marcadores', 'warning', 2000);
             }
         }
     };
@@ -201,7 +201,7 @@ export const loadTicker = async () => {
 
 const renderTicker = (games, isStale) => {
     const container = document.getElementById('ticker');
-    let html = `<h3 class="h5">📺 Marcadores en Vivo ${isStale ? '<span class="badge bg-warning text-dark">Datos en caché ⚠️</span>' : ''}</h3>`;
+    let html = `<h3 class="h5">Marcadores en Vivo ${isStale ? '<span class="badge bg-warning text-dark">Datos en caché ⚠️</span>' : ''}</h3>`;
     html += `<div class="list-group">`;
     if (games.length === 0) {
         html += `<div class="list-group-item text-muted">No hay partidos disponibles</div>`;
@@ -245,20 +245,20 @@ export const loadExporter = async () => {
         const teamsStale = teamsResult.status === 'fulfilled' ? teamsResult.value.isStale : false;
         const stadiumsStale = stadiumsResult.status === 'fulfilled' ? stadiumsResult.value.isStale : false;
 
-        let errorMessages = '';
-        if (gamesResult.status === 'rejected') errorMessages += `<li>⚠️ Partidos: ${gamesResult.reason.message}</li>`;
-        if (teamsResult.status === 'rejected') errorMessages += `<li>⚠️ Equipos: ${teamsResult.reason.message}</li>`;
+        let errorMessages = ''; // CARGAR UNA IMAGEN ANTES DE INCIAR SECCION DE BACKGROUND
+        if (gamesResult.status === 'rejected') errorMessages += `<li>Partidos: ${gamesResult.reason.message}</li>`;
+        if (teamsResult.status === 'rejected') errorMessages += `<li>Equipos: ${teamsResult.reason.message}</li>`;
         if (stadiumsResult.status === 'rejected') errorMessages += `<li>⚠️ Estadios: ${stadiumsResult.reason.message}</li>`;
 
         container.innerHTML = `
-            <h3 class="h5">📄 Reporte de Datos</h3>
+            <h3 class="h5">Reporte de Datos</h3>
             <div id="print-area" class="p-3 border rounded bg-light" style="border: 1px solid #dee2e6 !important;">
-                <p><strong>📊 Partidos:</strong> ${games.length} ${gamesStale ? '(caché)' : ''}</p>
-                <p><strong>⚽ Equipos:</strong> ${teams.length} ${teamsStale ? '(caché)' : ''}</p>
-                <p><strong>🏟️ Estadios:</strong> ${stadiums.length} ${stadiumsStale ? '(caché)' : ''}</p>
+                <p><strong>Partidos:</strong> ${games.length} ${gamesStale ? '(caché)' : ''}</p>
+                <p><strong>Equipos:</strong> ${teams.length} ${teamsStale ? '(caché)' : ''}</p>
+                <p><strong>Estadios:</strong> ${stadiums.length} ${stadiumsStale ? '(caché)' : ''}</p>
                 ${errorMessages ? `<div class="alert alert-danger mt-2"><strong>Secciones sin completar:</strong><ul>${errorMessages}</ul></div>` : ''}
                 <button onclick="window.print()" class="btn btn-primary mt-3">
-                    🖨️ Exportar / Imprimir
+                    Exportar / Imprimir
                 </button>
             </div>
         `;
@@ -268,7 +268,7 @@ export const loadExporter = async () => {
         if (hasAuthError) showLoginModal();
 
     } catch (error) {
-        container.innerHTML = `<p class="text-danger">❌ Error en exportador: ${error.message}</p>`;
+        container.innerHTML = `<p class="text-danger">Error en exportador: ${error.message}</p>`;
     }
 };
 
@@ -281,29 +281,29 @@ export const loadMonitor = async () => {
             <div class="col-md-3 col-sm-6">
                 <div class="card p-3 text-center" id="monitor-teams">
                     <h6>Equipos</h6>
-                    <div class="display-6" id="status-teams">⏳</div>
+                    <div class="display-6" id="status-teams"></div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="card p-3 text-center" id="monitor-groups">
                     <h6>Grupos</h6>
-                    <div class="display-6" id="status-groups">⏳</div>
+                    <div class="display-6" id="status-groups"></div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="card p-3 text-center" id="monitor-games">
                     <h6>Partidos</h6>
-                    <div class="display-6" id="status-games">⏳</div>
+                    <div class="display-6" id="status-games"></div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="card p-3 text-center" id="monitor-stadiums">
                     <h6>Estadios</h6>
-                    <div class="display-6" id="status-stadiums">⏳</div>
+                    <div class="display-6" id="status-stadiums"></div>
                 </div>
             </div>
         </div>
-        <button onclick="window.checkAllEndpoints()" class="btn btn-secondary">🔄 Probar todos</button>
+        <button onclick="window.checkAllEndpoints()" class="btn btn-secondary"> Probar todos</button>
     `;
     await checkAllEndpoints();
 };
@@ -377,9 +377,9 @@ export const loadBilingual = async () => {
     } catch (error) {
         if (error.message === 'SESION_EXPIRADA' || error.message === 'NO_AUTH') {
             showLoginModal();
-            container.innerHTML = '<p class="text-warning">🔒 Sesión expirada.</p>';
+            container.innerHTML = '<p class="text-warning">Sesión expirada.</p>';
         } else {
-            container.innerHTML = `<p class="text-danger">❌ Error: ${error.message}</p>`;
+            container.innerHTML = `<p class="text-danger">Error: ${error.message}</p>`;
         }
     }
 };
@@ -389,7 +389,7 @@ const renderBilingual = () => {
     const langLabel = currentLang === 'en' ? '🇬🇧 Inglés' : '🇮🇷 Persa';
     
     let html = `
-        <h3 class="h5">🔀 Buscador Bilingüe</h3>
+        <h3 class="h5">Buscador Bilingüe</h3>
         <button onclick="window.toggleLanguage()" class="btn btn-info text-white mb-3">
             Cambiar a ${currentLang === 'en' ? 'Persa' : 'Inglés'}
         </button>
@@ -462,7 +462,7 @@ export const loadBracket = async () => {
     } catch (error) {
         if (error.message === 'SESION_EXPIRADA' || error.message === 'NO_AUTH') {
             showLoginModal();
-            container.innerHTML = '<p class="text-warning">🔒 Sesión expirada.</p>';
+            container.innerHTML = '<p class="text-warning">Sesión expirada.</p>';
             return;
         }
 
@@ -471,7 +471,7 @@ export const loadBracket = async () => {
             // Marcamos las rondas que intentamos cargar como error
             // (No sabemos cuáles eran, así que mostramos un mensaje en la parte superior)
             container.innerHTML = `
-                <div class="alert alert-danger">⚠️ Error al actualizar: ${error.message}. Mostrando datos anteriores.</div>
+                <div class="alert alert-danger">Error al actualizar: ${error.message}. Mostrando datos anteriores.</div>
             `;
             renderBracket(container, bracketState.rounds, []);
         } else {
@@ -493,7 +493,7 @@ const renderBracket = (container, rounds, teams) => {
     };
     const order = ['R32', 'R16', 'QF', 'SF', 'FINAL', 'third'];
 
-    let html = `<h3 class="h5">🏆 Árbol de Eliminatorias</h3><div class="bracket-container d-flex flex-wrap gap-4 justify-content-center">`;
+    let html = `<h3 class="h5">Árbol de Eliminatorias</h3><div class="bracket-container d-flex flex-wrap gap-4 justify-content-center">`;
 
     order.forEach(key => {
         if (!rounds[key]) return;
@@ -545,32 +545,6 @@ const renderEmptyBracket = (container) => {
 // ============================================================
 export const setupTabs = () => {
     const buttons = document.querySelectorAll('.tab-btn');
-    /*
-    buttons.forEach(btn => {
-        btn.addEventListener('click', async () => {
-                buttons.forEach(b => {
-                b.classList.remove('active', 'btn-primary');
-                b.classList.add('btn-outline-primary');
-            });
-            btn.classList.add('active', 'btn-primary');
-            btn.classList.remove('btn-outline-primary');
-            
-            document.querySelectorAll('.tab-content').forEach(section => section.style.display = 'none');
-            const tabId = btn.dataset.tab;
-            const section = document.getElementById(tabId);
-            if (section) section.style.display = 'block';
-            
-            currentTab = tabId;
-            await loadTabContent(tabId);
-        });
-    });
-    // Activar el primero visualmente
-    const first = document.querySelector('.tab-btn.active');
-    if (first) {
-        first.classList.add('btn-primary');
-        first.classList.remove('btn-outline-primary');
-    }
-    */
     buttons.forEach(btn => {
         btn.addEventListener('click', async () => {
             // Remover clase activa de todos

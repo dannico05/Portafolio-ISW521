@@ -27,7 +27,7 @@ import { login, logout, getToken } from './api.js';
         await login(email, password); // Ahora pasamos email
         hideLoginModal();
         document.getElementById('logoutBtn').style.display = 'block';
-        showToast('✅ Sesión iniciada correctamente', 'success');
+        showToast('Sesión iniciada correctamente', 'success');
         
         const activeTab = document.querySelector('.tab-btn.active');
         if (activeTab) {
@@ -35,7 +35,7 @@ import { login, logout, getToken } from './api.js';
         }
     } catch (error) {
         errorEl.style.display = 'block';
-        errorEl.textContent = `❌ ${error.message}`;
+        errorEl.textContent = ` ${error.message}`;
     }
 });
 
@@ -48,7 +48,7 @@ import { login, logout, getToken } from './api.js';
         
         // Limpiar todas las vistas
         document.querySelectorAll('.tab-content').forEach(section => {
-            section.innerHTML = '🔒 Sesión cerrada. Inicia sesión para ver datos.';
+            section.innerHTML = 'Sesión cerrada. Inicia sesión para ver datos.';
             section.style.display = 'block';
         });
         // Detener polling si existe
