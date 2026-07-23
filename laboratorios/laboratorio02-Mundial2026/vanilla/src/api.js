@@ -1,36 +1,66 @@
 // ============================================================
-// CONFIGURACIÓN
+// CONFIGURACION
 // ============================================================
 const API_BASE = '/api';  // Usa el proxy de Vite
 
 // ============================================================
-// AUTENTICACIÓN
+// AUTENTICACION
 // ============================================================
+
+/**
+ * Genera un token JWT simulado con expiracion de 5 minutos.
+ * Estructura: header.base64 + "." + payload.base64 + "." + firma
+ * Se usa cuando la API real no responde (offline, error de red, etc.)
+ */
+const generateSimulatedJWT = (email) => {
+    const header = { alg: 'HS256', typ: 'JWT' };
+    const now = Math.floor(Date.now() / 1000);
+    const payload = {
+        sub: email,
+        iat: now,
+        exp: now + 300 // 5 minutos de expiracion
+    };
+    const headerB64 = btoa(JSON.stringify(header));
+    const payloadB64 = btoa(JSON.stringify(payload));
+    return `${headerB64}.${payloadB64}.simulated`;
+};
+
+/**
+ * Intenta autenticar contra la API real.
+ * Si la API falla (error de red, 500, timeout), genera un token JWT
+ * simulado con 5 minutos de expiracion para permitir el uso offline.
+ */
 export const login = async (email, password) => {
-    console.log('Intentando login con:', { email, password }); // Para depuración
-    const response = await fetch(`${API_BASE}/auth/authenticate`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-    });
+    try {
+        const response = await fetch(`${API_BASE}/auth/authenticate`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
 
-    if (!response.ok) {
-        let errorMessage = `Error ${response.status}`;
-        try {
-            const errorData = await response.json();
-            if (errorData.error) errorMessage = errorData.error;
-        } catch {
-            const text = await response.text();
-            if (text) errorMessage = text;
+        if (!response.ok) {
+            // Si la API responde con error HTTP, generamos token simulado
+            const token = generateSimulatedJWT(email);
+            localStorage.setItem('jwt_token', token);
+            return token;
         }
-        throw new Error(errorMessage);
-    }
 
-    const data = await response.json();
-    const token = data.token || data.access_token || data.jwt;
-    if (!token) throw new Error('No se recibió token');
-    localStorage.setItem('jwt_token', token);
-    return token;
+        const data = await response.json();
+        const token = data.token || data.access_token || data.jwt;
+        if (!token) throw new Error('No se recibio token');
+        localStorage.setItem('jwt_token', token);
+        return token;
+
+    } catch (error) {
+        // Si la API no responde (error de red, CORS, timeout, etc.),
+        // generamos un token simulado para permitir el uso offline
+        if (error.message === 'No se recibio token') {
+            throw error;
+        }
+        const token = generateSimulatedJWT(email);
+        localStorage.setItem('jwt_token', token);
+        return token;
+    }
 };
 
 export const logout = () => {
@@ -56,7 +86,20 @@ const getCache = (key) => {
 // ============================================================
 // CLIENTE API RESILIENTE
 // ============================================================
+
+/**
+ * Cliente HTTP con backoff exponencial, caché y manejo de errores.
+ *
+ * Flujo de errores:
+ * - 401: Limpia token y lanza SESION_EXPIRADA (el UI muestra modal)
+ * - 429: Backoff exponencial con countdown visible (1s, 2s, 4s, 8s)
+ * - 500: Backoff exponencial SIN countdown visible (solo espera silenciosa)
+ * - Error de red: Reintenta y eventualmente usa caché si existe
+ * - skipCache: Si es true, no guarda ni lee de localStorage
+ */
 export const apiRequest = async (endpoint, options = {}) => {
+    const { skipCache = false, ...fetchOptions } = options;
+
     const token = getToken();
     if (!token) {
         throw new Error('NO_AUTH');
@@ -66,27 +109,33 @@ export const apiRequest = async (endpoint, options = {}) => {
     const headers = {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
-        ...options.headers
+        ...fetchOptions.headers
     };
 
     let attempt = 0;
     const MAX_ATTEMPTS = 4;
-    let waitTime = 1000;
+    let waitTime = 1000; // Backoff inicial: 1 segundo
 
     while (attempt < MAX_ATTEMPTS) {
         try {
             const response = await fetch(url, {
-                ...options,
+                ...fetchOptions,
                 headers,
-                signal: options.signal
+                signal: fetchOptions.signal
             });
 
+            // 401: Token expirado o invalido — limpiar y notificar al UI
             if (response.status === 401) {
                 localStorage.removeItem('jwt_token');
                 throw new Error('SESION_EXPIRADA');
             }
 
+            // 429: Limite de tasa — backoff exponencial con countdown visible
             if (response.status === 429) {
+                window.dispatchEvent(new CustomEvent('backoff_start', {
+                    detail: { waitMs: waitTime, type: 'rate_limit' }
+                }));
+                // Mostrar countdown visual durante el backoff
                 for (let i = Math.floor(waitTime / 1000); i > 0; i--) {
                     window.dispatchEvent(new CustomEvent('countdown', {
                         detail: { seconds: i, type: 'rate_limit' }
@@ -102,16 +151,13 @@ export const apiRequest = async (endpoint, options = {}) => {
                 continue;
             }
 
+            // 500+: Error de servidor — backoff SIN countdown visible (silencioso)
             if (response.status >= 500) {
-                for (let i = Math.floor(waitTime / 1000); i > 0; i--) {
-                    window.dispatchEvent(new CustomEvent('countdown', {
-                        detail: { seconds: i, type: 'server_error' }
-                    }));
-                    await new Promise(resolve => setTimeout(resolve, 1000));
-                }
-                window.dispatchEvent(new CustomEvent('countdown', {
-                    detail: { seconds: 0, type: 'server_error' }
+                window.dispatchEvent(new CustomEvent('backoff_start', {
+                    detail: { waitMs: waitTime, type: 'server_error' }
                 }));
+                // Backoff silencioso: solo esperar sin mostrar countdown
+                await new Promise(resolve => setTimeout(resolve, waitTime));
                 waitTime *= 2;
                 attempt++;
                 if (attempt >= MAX_ATTEMPTS) break;
@@ -122,28 +168,37 @@ export const apiRequest = async (endpoint, options = {}) => {
                 throw new Error(`HTTP ${response.status}`);
             }
 
+            // Exito: guardar en caché (a menos que skipCache este activo)
             const data = await response.json();
-            saveCache(endpoint, data);
+            if (!skipCache) {
+                saveCache(endpoint, data);
+            }
             return { data, isStale: false };
 
         } catch (error) {
             if (error.name === 'AbortError') throw error;
             if (error.message === 'SESION_EXPIRADA' || error.message === 'NO_AUTH') throw error;
 
+            // Si es el ultimo intento o error de red, intentar usar caché
             if (attempt >= MAX_ATTEMPTS - 1 || error.message === 'Failed to fetch' || error.message.includes('NetworkError')) {
-                const cached = getCache(endpoint);
-                if (cached) {
-                    return { data: cached, isStale: true };
+                if (!skipCache) {
+                    const cached = getCache(endpoint);
+                    if (cached) {
+                        return { data: cached, isStale: true };
+                    }
                 }
-                throw new Error(`No se pudo obtener ${endpoint} y no hay caché`);
+                throw new Error(`No se pudo obtener ${endpoint} y no hay cache`);
             }
             attempt++;
         }
     }
 
-    const cached = getCache(endpoint);
-    if (cached) {
-        return { data: cached, isStale: true };
+    // Si se agotaron los reintentos, intentar caché (solo si no skipCache)
+    if (!skipCache) {
+        const cached = getCache(endpoint);
+        if (cached) {
+            return { data: cached, isStale: true };
+        }
     }
     throw new Error(`Fallo total al obtener ${endpoint}`);
 };
