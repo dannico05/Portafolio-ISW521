@@ -6,12 +6,6 @@ const API_BASE = '/api';  // Usa el proxy de Vite
 // ============================================================
 // AUTENTICACION
 // ============================================================
-
-/**
- * Genera un token JWT simulado con expiracion de 5 minutos.
- * Estructura: header.base64 + "." + payload.base64 + "." + firma
- * Se usa cuando la API real no responde (offline, error de red, etc.)
- */
 const generateSimulatedJWT = (email) => {
     const header = { alg: 'HS256', typ: 'JWT' };
     const now = Math.floor(Date.now() / 1000);
@@ -25,11 +19,6 @@ const generateSimulatedJWT = (email) => {
     return `${headerB64}.${payloadB64}.simulated`;
 };
 
-/**
- * Intenta autenticar contra la API real.
- * Si la API falla (error de red, 500, timeout), genera un token JWT
- * simulado con 5 minutos de expiracion para permitir el uso offline.
- */
 export const login = async (email, password) => {
     try {
         const response = await fetch(`${API_BASE}/auth/authenticate`, {
@@ -86,17 +75,6 @@ const getCache = (key) => {
 // ============================================================
 // CLIENTE API RESILIENTE
 // ============================================================
-
-/**
- * Cliente HTTP con backoff exponencial, caché y manejo de errores.
- *
- * Flujo de errores:
- * - 401: Limpia token y lanza SESION_EXPIRADA (el UI muestra modal)
- * - 429: Backoff exponencial con countdown visible (1s, 2s, 4s, 8s)
- * - 500: Backoff exponencial SIN countdown visible (solo espera silenciosa)
- * - Error de red: Reintenta y eventualmente usa caché si existe
- * - skipCache: Si es true, no guarda ni lee de localStorage
- */
 export const apiRequest = async (endpoint, options = {}) => {
     const { skipCache = false, ...fetchOptions } = options;
 

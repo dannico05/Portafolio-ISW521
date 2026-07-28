@@ -234,18 +234,6 @@ const showSplash = (container) => {
 // ============================================================
 // LIVE TICKER (Con Polling)
 // ============================================================
-
-/**
- * Carga y muestra los marcadores en vivo con polling cada 10 segundos.
- *
- * Flujo de errores:
- * - Si recibe 429: apiRequest despacha backoff_start, este listener
- *   detiene el polling y lo reinicia cuando el backoff termina.
- * - Si recibe 500: apiRequest hace backoff silencioso (sin countdown),
- *   el polling se detiene y reinicia automáticamente.
- * - Si recibe 401/NO_AUTH: detiene polling y muestra modal de login.
- * - Si falla la red: si hay caché, muestra datos stale; si no, error.
- */
 export const loadTicker = async () => {
     const container = document.getElementById('ticker');
     container.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Cargando...</span></div>';
@@ -351,17 +339,6 @@ const renderTicker = (games, isStale) => {
 // ============================================================
 // EXPORTADOR DE REPORTES
 // ============================================================
-
-/**
- * Genera un reporte exportable con todos los partidos, cruzando datos
- * de games, teams y stadiums. Si algún recurso falla, muestra
- * "No disponible" en esa columna pero permite exportar igualmente.
- *
- * Flujo de errores:
- * - Usa Promise.allSettled para que cada petición sea independiente.
- * - Si algún recurso falla, se muestra como error pero no bloquea los demás.
- * - Si hay error 401 en alguno, muestra modal de sesión expirada.
- */
 export const loadExporter = async () => {
     const container = document.getElementById('exporter');
     container.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Cargando...</span></div>';
@@ -460,23 +437,6 @@ export const loadExporter = async () => {
 // ============================================================
 // MONITOR DE INTEGRIDAD
 // ============================================================
-
-/**
- * Verifica el estado de cada endpoint de la API de forma secuencial
- * con un delay de 800ms entre cada uno (para visualizar el proceso).
- *
- * Características:
- * - Cada petición usa skipCache: true para verificar estado real.
- * - Cada petición tiene timeout de 5s con AbortController.
- * - Indicador visual: OK (verde), Timeout (amarillo), Error (rojo).
- * - Las peticiones son independientes (si una falla, las demás siguen).
- *
- * Flujo de errores:
- * - Si el timeout expira: AbortError → muestra "Timeout".
- * - Si recibe 401: muestra "Sesión" y abre modal de login.
- * - Si falla la red: muestra "Error".
- * - Si responde OK: muestra "OK" con fondo verde.
- */
 export const loadMonitor = async () => {
     const container = document.getElementById('monitor');
     container.innerHTML = `
@@ -552,8 +512,6 @@ const checkEndpoint = async (endpoint, timeout = 5000) => {
     }
 };
 
-// Se ejecutan las peticiones secuencialmente con un delay artificial
-// para que el usuario pueda ver el proceso de cada endpoint.
 // Se usa skipCache: true para verificar el estado real de la API.
 window.checkAllEndpoints = async function() {
     const endpoints = ['teams', 'groups', 'games', 'stadiums'];
@@ -566,19 +524,6 @@ window.checkAllEndpoints = async function() {
 // ============================================================
 // BUSCADOR BILINGUE
 // ============================================================
-
-/**
- * Muestra equipos y estadios con soporte bilingüe (inglés/persa).
- * Los datos se cargan una sola vez y se almacenan en memoria.
- * El switch de idioma actualiza el DOM sin nuevas peticiones,
- * usando atributos data-i18n, data-name-en y data-name-fa.
- *
- * Flujo de errores:
- * - Si falla la carga de datos: muestra error en el contenedor.
- * - Si recibe 401: muestra modal de sesión expirada.
- * - Si el usuario cambia idioma durante la carga: al recibir datos,
- *   renderBilingual() usa el currentLang actual, respetando la elección.
- */
 export const loadBilingual = async () => {
     const container = document.getElementById('bilingual');
     container.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Cargando...</span></div>';
@@ -680,7 +625,6 @@ window.toggleLanguage = function() {
 // ============================================================
 
 // Orden preferido de las rondas conocidas. Se usa SOLO para ordenar,
-// no para iterar. El bracket se construye con las keys de los datos.
 const ROUND_ORDER = ['R32', 'R16', 'QF', 'SF', 'FINAL', '3RD'];
 
 const ROUND_LABELS = {
@@ -707,18 +651,6 @@ const sortRoundKeys = (keys) => {
     });
 };
 
-/**
- * Carga el bracket visual de eliminatorias.
- * Agrupa los partidos por round/stage dinámico (no usa array fijo).
- * El bracket se construye con las keys que vienen de los datos,
- * ordenadas según un orden preferido conocido.
- *
- * Flujo de errores:
- * - Si falla la petición pero ya hay rondas guardadas en bracketState,
- *   se conservan las rondas previas y se marcan las nuevas como error.
- * - Si no hay datos previos, muestra "Por definir" para cada ronda.
- * - Si recibe 401: detiene todo y muestra modal de sesión expirada.
- */
 export const loadBracket = async () => {
     const container = document.getElementById('bracket');
     container.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Cargando...</span></div>';
