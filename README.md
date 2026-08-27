@@ -6,8 +6,5 @@
 **Período:** 2026 – II Cuatrimestre  
 
 
-## Tecnologías usadas
-HTML · CSS · JavaScript
-
 ## Notas del curso
 Este repositorio documenta mi aprendizaje semana a semana.
